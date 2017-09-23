@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title> 系统接入平台-系统用户管理 </title>
+
+            <meta name="description" content="Minimal empty page" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+            <!-- basic styles -->
+
+            <link href="{$webroot}assets/css/bootstrap.min.css" rel="stylesheet" />
+            <link rel="stylesheet" href="{$webroot}assets/css/font-awesome.min.css" />
+
+            <!--[if IE 7]>
+            <link rel="stylesheet" href="{$webroot}assets/css/font-awesome-ie7.min.css" />
+            <![endif]-->
+
+            <!-- page specific plugin styles -->
+            <link rel="stylesheet" href="{$webroot}assets/css/jquery-ui-1.10.3.custom.min.css" />
+            <link rel="stylesheet" href="{$webroot}assets/css/jquery.gritter.css" />
+            <link rel="stylesheet" href="{$webroot}assets/css/select2.css" />
+            <link rel="stylesheet" href="{$webroot}assets/css/chosen.css" />
+            <link rel="stylesheet" href="{$webroot}assets/css/ui.jqgrid.css" />
+
+            <!-- fonts -->
+
+            <link rel="stylesheet" href="{$webroot}assets/css/ace-fonts.css" />
+
+            <!-- ace styles -->
+
+            <link rel="stylesheet" href="{$webroot}assets/css/ace.min.css" />
+            <link rel="stylesheet" href="{$webroot}assets/css/ace-rtl.min.css" />
+            <link rel="stylesheet" href="{$webroot}assets/css/ace-skins.min.css" />
+
+            <!--[if lte IE 8]>
+            <link rel="stylesheet" href="{$webroot}assets/css/ace-ie.min.css" />
+            <![endif]-->
+
+            <!-- inline styles related to this page -->
+
+            <!-- ace settings handler -->
+
+            <!--script src="{$webroot}assets/js/ace-extra.min.js"></script-->
+            <script src="{$webroot}assets/js/uncompressed/ace-extra.js"></script>
+
+            <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+            <!--[if lt IE 9]>
+            <script src="{$webroot}assets/js/html5shiv.js"></script>
+            <script src="{$webroot}assets/js/respond.min.js"></script>
+            <![endif]-->
+        </head>
+
+        <body>
+            <include file="./Tpl/header.html" />
+
+            <div class="main-container" id="main-container">
+                <script type="text/javascript">
+                    try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+                </script>
+
+                <div class="main-container-inner">
+                    <include file="./Tpl/sidebar.html" />
+
+                    <div class="main-content">
+
+                        <div class="breadcrumbs" id="breadcrumbs">
+                            <script type="text/javascript">
+                                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                            </script>
+
+                            <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-home home-icon"></i>
+                                <a href="#">首页</a>
+                            </li>
+                            <li class="active">系统用户管理</li>
+                            </ul><!-- .breadcrumb -->
+
+                            <div class="nav-search" id="nav-search">
+                                <form class="form-search">
+                                    <span class="input-icon">
+                                        <input type="text" placeholder="搜索 ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                        <i class="icon-search nav-search-icon"></i>
+                                    </span>
+                                </form>
+                            </div><!-- #nav-search -->
+                        </div>
+
+                        <div class="page-content">
+                            <div class="page-header">
+                                <h1>
+                                    <small>
+                                        选择用户组: &nbsp;&nbsp;&nbsp;
+                                        <select id="userGroupSelector" style="width:200px">
+                                            <php>
+                                                foreach($groups as $key => $value){
+                                                  echo '<optgroup label="'.$key.'">';
+                                                    foreach($value as $v){
+                                                      echo '<option value="'.$v[0].'">'.$v[1].' ('.$v[2].')'.'</option>';
+                                                    }
+                                                  echo '</optgroup>';
+                                                }
+                                            </php>
+                                    </select>
+                                    
+                                    <button class="btn btn-xs btn-info" type="button" onClick="addUserButtonClicked();">
+                                            <i class="icon-plus bigger-110"></i>
+                                            增加<span id="newUserButtonText"></span>
+                                        </button>
+                                        
+                                    </small>
+                                </h1>
+                                
+                            </div><!-- /.page-header -->
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <!-- PAGE CONTENT BEGINS -->
+                                    <table id="grid-table"></table>
+                                    <div id="grid-pager"></div>
+                                    <!-- PAGE CONTENT ENDS -->
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+
+                            <hr />
+                            <div class="well">
+                                <h4 class="green smaller lighter">Debug</h4>
+                                <p id="debug_text"></p>
+                            </div>
+
+                        </div><!-- /.page-content -->
+                    </div><!-- /.main-content -->
+
+                </div><!-- /.main-container-inner -->
+            </div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='{$webroot}assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+</script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+window.jQuery || document.write("<script src='{$webroot}assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+    if("ontouchend" in document) document.write("<script src='{$webroot}assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="{$webroot}assets/js/bootstrap.min.js"></script>
+<script src="{$webroot}assets/js/typeahead-bs2.min.js"></script>
+
+<!-- page specific plugin scripts -->
+<script src="{$webroot}assets/js/jquery.gritter.min.js"></script>
+<script src="{$webroot}assets/js/select2.min.js"></script>
+<script src="{$webroot}assets/js/chosen.jquery.min.js"></script>
+<script src="{$webroot}assets/js/jqGrid/jquery.jqGrid.min.js"></script>
+<script src="{$webroot}assets/js/jqGrid/i18n/grid.locale-cn.js"></script>
+
+<!-- ace scripts -->
+
+<script src="{$webroot}assets/js/ace-elements.min.js"></script>
+<script src="{$webroot}assets/js/ace.min.js"></script>
+
+<!-- inline scripts related to this page -->
+<script>
+    var userGroupList = [];
+    var userCount = [];
+    var groupType = [];
+    var groupTypeName = [];
+    var userList = [];
+    var currentOperatingUserId = -1;
+    var currentOperatingUserSequence = -1;
+    var currentOperatingGroupId = -1;
+
+    <?php
+    foreach($groups as $key => $value){
+        foreach($value as $v){
+            echo 'userGroupList['.$v[0].']="'.$v[1].'";';
+            echo 'userCount['.$v[0].']="'.$v[2].'";';
+            echo 'groupType['.$v[0].']="'.$v[3].'";';
+            echo 'groupTypeName['.$v[0].']="'.$key.'";';
+        }
+    }
+    ?>
+
+    jQuery(document).ready(function(){
+        listUsers();
+
+        $("#userGroupSelector").select2({width:"off"});
+        $("#userGroupSelector").on("change", function(e) {listUsers(); });
+    });
+    
+    var toUN = {
+        on: function(str) {
+            var a = [],
+            i = 0;
+            for (; i < str.length;) a[i] = ("00" + str.charCodeAt(i++).toString(16)).slice( - 4);
+            return "\\u" + a.join("\\u")
+        },
+        un: function(str) {
+            return unescape(str.replace(/\\/g, "%"))
+        }
+    };
+
+    function listUsers(){  // using
+        currentOperatingGroupId = $("#userGroupSelector").val();
+        $("#newUserButtonText").text(userGroupList[currentOperatingGroupId]);
+        $("#newUserBannerText").text(userGroupList[currentOperatingGroupId]);
+        $("#newCustomerBannerText").text(userGroupList[currentOperatingGroupId]);
+        var url = '/user/api_getuser_list/'+currentOperatingGroupId;
+        $.ajax({url:url,async:true,cache:false,dataType:"text", success:function(data){
+            var jsonObj = eval("("+data+")");
+            $("#debug_text").text(data);
+            userList = jsonObj.userList;
+            var htmlStr = '';
+            for(var key in userList){
+                htmlStr += '<tr>';
+                //htmlStr += '<td class="center"><label><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>';
+                htmlStr += '<td>'+userList[key].login_name+'</td>';
+                if(userList[key].nick_name == null) htmlStr += '<td>空</td>';
+                else htmlStr += '<td>'+userList[key].nick_name+'</td>';
+                if(userList[key].email == null) htmlStr += '<td>空</td>';
+                else htmlStr += '<td>'+userList[key].email+'</td>';
+                htmlStr += '<td>'+userList[key].create_date+'</td>';
+                if(userList[key].locked == 0) htmlStr += '<td class="hidden-480"><span class="label label-lg label-success">正常</span></td>';
+                if(userList[key].locked == 1) htmlStr += '<td class="hidden-480"><span class="label label-lg label-warning">禁用</span></td>';
+                htmlStr += '<td><button class="btn btn-xs btn-info btn-block" type="button" onClick="operateDataLine('+key+');">操作</button></td>';
+                htmlStr += '</tr>';
+            }
+
+            $("#groupListTBody").html(htmlStr);
+        } });
+    }
+
+    function showUiResult(title, content){
+        $.gritter.add({
+            title: title,
+            text: content,
+        class_name: 'gritter-success gritter-light' });
+    }
+    
+    var grid_data = [];
+
+    var colNames = ['时间', '手机号码', '用户名', '微信openid'];
+
+    var colModels = [{
+        name: 'date',
+        index: 'date',
+        width: 80,
+        editable: false,
+        sortable: true,
+        sorttype: "text"
+    }, {
+        name: 'a',
+        width: 70,
+        editable: false
+    },
+    {
+        name: 'b',
+        width: 70,
+        editable: false
+    }, {
+        name: 'c',
+        width: 70,
+        editable: false
+    }
+    ];
+
+    var windowsStat = function() {
+            var winWidth = 0;
+            var winHeight = 0;
+
+            // 获取窗口宽度
+            if (window.innerWidth) winWidth = window.innerWidth;
+            else if ((document.body) && (document.body.clientWidth)) winWidth = document.body.clientWidth;
+            // 获取窗口高度
+            if (window.innerHeight) winHeight = window.innerHeight;
+            else if ((document.body) && (document.body.clientHeight)) winHeight = document.body.clientHeight;
+            // 通过深入 Document 内部对 body 进行检测，获取窗口大小
+            if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
+                winHeight = document.documentElement.clientHeight;
+                winWidth = document.documentElement.clientWidth;
+            }
+
+            return [winWidth, winHeight];
+        }
+
+    var setFormCenter = function(formId) {
+        var windowsStatArr = windowsStat();
+        var winWidth = windowsStatArr[0];
+        var winHeight = windowsStatArr[1];
+
+        var dlgDiv = $(formId);
+        var parentDiv = dlgDiv.parent(); // div#gbox_list
+        var dlgWidth = dlgDiv.width();
+        var parentWidth = winWidth;
+        var dlgHeight = dlgDiv.height();
+        var parentHeight = winHeight;
+
+        dlgDiv[0].style.top = Math.round((parentHeight - dlgHeight) / 2) + "px";
+        dlgDiv[0].style.left = Math.round((parentWidth - dlgWidth) / 2) + "px";
+    };
+
+    var targetUser = 0;
+    
+    var grid_selector = "#grid-table";
+    var pager_selector = "#grid-pager";
+
+    jQuery(function($) {
+        updateHeader();
+
+        jQuery(grid_selector).jqGrid({
+            shrinkToFit: false,
+            data: grid_data,
+            datatype: "local",
+            height: 250,
+            colNames: colNames,
+            colModel: colModels,
+            viewrecords: true,
+            rowNum: 10,
+            rowList: [10, 20, 30],
+            pager: pager_selector,
+            altRows: true,
+
+            multiselect: false,
+            multiboxonly: true,
+
+            loadComplete: function() {
+                var table = this;
+                setTimeout(function() {
+                    updatePagerIcons(table);
+                    enableTooltips(table);
+                }, 0);
+            },
+
+            //editurl: "../test/submit",//nothing is saved
+            editurl: "../maintain/api_record",
+            caption: "数据记录",
+            autowidth: true
+        });
+		
+        //navButtons
+        jQuery(grid_selector).jqGrid('navGrid', pager_selector, { //navbar options
+            edit: false,
+            editicon: 'icon-pencil blue',
+            add: false,
+            addicon: 'icon-plus-sign purple',
+            del: false,
+            delicon: 'icon-trash red',
+            search: false,
+            searchicon: 'icon-search orange',
+            refresh: false,
+            refreshicon: 'icon-refresh green',
+            view: true,
+            viewicon: 'icon-zoom-in grey',
+        }, {
+            //edit record form
+            jqModal: true,
+            closeAfterEdit: true,
+            recreateForm: true,
+            viewPagerButtons: false,
+            beforeShowForm: function(e) {
+                var form = $(e[0]);
+                form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />');
+
+                style_edit_form(form);
+            },
+            afterComplete: function(response, postdata, formid) {
+                var jsonObj = eval("("+response.responseText+")");
+                if(jsonObj.state == 200) reloadSearchList();
+                showUiResult(jsonObj.title,jsonObj.comment);
+            }
+        }, {
+            //new record form
+            closeAfterAdd: true,
+            recreateForm: true,
+            beforeShowForm: function(e) {
+                var form = $(e[0]);
+                form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
+                style_edit_form(form);
+            },
+            afterComplete: function(response, postdata, formid) {
+                //$("#debug_text").text(response.responseText);
+                var jsonObj = eval("("+response.responseText+")");
+                if(jsonObj.state == 200) reloadSearchList();
+                showUiResult(jsonObj.title,jsonObj.comment);
+                //$(".ui-icon-closethick").trigger('click');
+            }
+        }, {
+            //delete record form
+            recreateForm: true,
+            beforeShowForm: function(e) {
+                var form = $(e[0]);
+                if (form.data('styled')) return false;
+
+                form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
+                style_delete_form(form);
+
+                form.data('styled', true);
+                setFormCenter("#delmodgrid-table");
+            },
+            onClick: function(e) {
+                alert(1);
+            },
+            afterComplete: function(response, postdata, formid) {
+                var jsonObj = eval("("+response.responseText+")");
+                if(jsonObj.state == 200) reloadSearchList();
+                showUiResult(jsonObj.title,jsonObj.comment);
+            }
+        }, {
+            //search form
+            recreateForm: true,
+            afterShowSearch: function(e) {
+                var form = $(e[0]);
+                form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
+                style_search_form(form);
+            },
+            afterRedraw: function() {
+                style_search_filters($(this));
+            },
+            multipleSearch: true,
+/**
+                        multipleGroup:true,
+                        showQuery: true
+                        */
+        }, {
+            //view record form
+            recreateForm: true,
+            width: 600,
+            beforeShowForm: function(e) {
+                var form = $(e[0]);
+                form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />');
+
+                style_display_merge_checkbox(e);
+                setFormCenter("#viewmodgrid-table");
+            }
+        });
+        
+        $(grid_selector).jqGrid('navButtonAdd', pager_selector, {
+            caption: "", title: "Reload Grid", buttonicon: "icon-refresh green",
+            onClickButton: function () {
+                //alert('"Refresh" button is clicked!');
+                if(chosenUserId != 0){
+                    reloadSearchList();
+                }
+            }
+        });
+    });
+	
+    function style_edit_form(form) {
+        style_edit_merge_checkbox(form);
+        setFormCenter("#editmodgrid-table");
+
+        //update buttons classes
+        var buttons = form.next().find('.EditButton .fm-button');
+        buttons.addClass('btn btn-sm').find('[class*="-icon"]').remove(); //ui-icon, s-icon
+        buttons.eq(0).addClass('btn-primary').prepend('<i class="icon-ok"></i>');
+        buttons.eq(1).prepend('<i class="icon-remove"></i>')
+
+        buttons = form.next().find('.navButton a');
+        buttons.find('.ui-icon').remove();
+        buttons.eq(0).append('<i class="icon-chevron-left"></i>');
+        buttons.eq(1).append('<i class="icon-chevron-right"></i>');
+    }
+
+    function style_delete_form(form) {
+        var buttons = form.next().find('.EditButton .fm-button');
+        buttons.addClass('btn btn-sm').find('[class*="-icon"]').remove(); //ui-icon, s-icon
+        buttons.eq(0).addClass('btn-danger').prepend('<i class="icon-trash"></i>');
+        buttons.eq(1).prepend('<i class="icon-remove"></i>')
+    }
+
+    function style_search_filters(form) {
+        form.find('.delete-rule').val('X');
+        form.find('.add-rule').addClass('btn btn-xs btn-primary');
+        form.find('.add-group').addClass('btn btn-xs btn-success');
+        form.find('.delete-group').addClass('btn btn-xs btn-danger');
+    }
+
+    function style_search_form(form) {
+        var dialog = form.closest('.ui-jqdialog');
+        var buttons = dialog.find('.EditTable')
+        buttons.find('.EditButton a[id*="_reset"]').addClass('btn btn-sm btn-info').find('.ui-icon').attr('class', 'icon-retweet');
+        buttons.find('.EditButton a[id*="_query"]').addClass('btn btn-sm btn-inverse').find('.ui-icon').attr('class', 'icon-comment-alt');
+        buttons.find('.EditButton a[id*="_search"]').addClass('btn btn-sm btn-purple').find('.ui-icon').attr('class', 'icon-search');
+    }
+
+    function beforeDeleteCallback(e) {
+        var form = $(e[0]);
+        if (form.data('styled')) return false;
+
+        form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
+        style_delete_form(form);
+
+        form.data('styled', true);
+    }
+
+    function beforeEditCallback(e) {
+        var form = $(e[0]);
+        form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
+        style_edit_form(form);
+    }
+
+    //replace icons with FontAwesome icons like above
+    function updatePagerIcons(table) {
+        var replacement = {
+            'ui-icon-seek-first': 'icon-double-angle-left bigger-140',
+            'ui-icon-seek-prev': 'icon-angle-left bigger-140',
+            'ui-icon-seek-next': 'icon-angle-right bigger-140',
+            'ui-icon-seek-end': 'icon-double-angle-right bigger-140'
+        };
+        $('.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon').each(function() {
+            var icon = $(this);
+            var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
+
+            if ($class in replacement) icon.attr('class', 'ui-icon ' + replacement[$class]);
+        })
+    }
+
+    function enableTooltips(table) {
+        $('.navtable .ui-pg-button').tooltip({
+            container: 'body'
+        });
+        //$(table).find('.ui-pg-div').tooltip({container:'body'});
+    }
+    </script>
+    </body>
+</html>

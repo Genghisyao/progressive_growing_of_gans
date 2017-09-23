@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<title> 系统接入平台-404 Error Page</title>
+
+		<meta name="description" content="Minimal empty page" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- basic styles -->
+
+		<link href="{$webroot}assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="{$webroot}assets/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="{$webroot}assets/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+
+		<!-- fonts -->
+
+		<link rel="stylesheet" href="{$webroot}assets/css/ace-fonts.css" />
+
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="{$webroot}assets/css/ace.min.css" />
+		<link rel="stylesheet" href="{$webroot}assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="{$webroot}assets/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="{$webroot}assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+
+		<script src="{$webroot}assets/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="{$webroot}assets/js/html5shiv.js"></script>
+		<script src="{$webroot}assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<include file="./Tpl/header.html" />
+
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+				<include file="./Tpl/sidebar.html" />
+
+				<div class="main-content">
+				    
+				    <div class="breadcrumbs hidden-480" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="/">首页</a>
+							</li>
+							<li class="active"> 404错误页面</li>
+						</ul><!-- .breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="搜索 ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="icon-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- #nav-search -->
+					</div>
+				    
+					<div class="page-content">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								
+                                <div class="error-container">
+									<div class="well">
+										<h1 class="grey lighter smaller">
+											<span class="blue bigger-125">
+												<i class="icon-sitemap"></i>
+												404
+											</span>
+											{$error_reason}
+										</h1>
+
+										<hr />
+										<h3 class="lighter smaller"> 我们查找了所有的地方, 但没有找到您指定的内容!</h3>
+
+										<div>
+											<form class="form-search">
+												<span class="input-icon align-middle">
+													<i class="icon-search"></i>
+
+													<input type="text" class="search-query" placeholder="站内搜索..." />
+												</span>
+												<button class="btn btn-sm" onclick="return false;">Go!</button>
+											</form>
+
+											<div class="space"></div>
+											<h4 class="smaller">请尝试下列步骤:</h4>
+
+											<ul class="list-unstyled spaced inline bigger-110 margin-15">
+												<li>
+													<i class="icon-hand-right blue"></i>
+													重新检查网址
+												</li>
+
+												<li>
+													<i class="icon-hand-right blue"></i>
+													阅读本站的有问必答部分
+												</li>
+
+												<li>
+													<i class="icon-hand-right blue"></i>
+													请告知我们
+												</li>
+											</ul>
+										</div>
+
+										<hr />
+										<div class="space"></div>
+
+										<div class="center">
+											<a href="#" class="btn btn-grey">
+												<i class="icon-arrow-left"></i>
+												返回
+											</a>
+										</div>
+									</div>
+								</div>
+								
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+				
+			</div><!-- /.main-container-inner -->
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='{$webroot}assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='{$webroot}assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='{$webroot}assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="{$webroot}assets/js/bootstrap.min.js"></script>
+		<script src="{$webroot}assets/js/typeahead-bs2.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+
+		<!-- ace scripts -->
+
+		<script src="{$webroot}assets/js/ace-elements.min.js"></script>
+		<script src="{$webroot}assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+		<script>
+		    
+      jQuery(document).ready(function(){
+        var body = $(document.body);
+		/*
+	    body.removeClass('skin-1 skin-2 skin-3');
+        skin_class = 'skin-1';
+	    if(skin_class != 'default') body.addClass(skin_class);
+	    if(skin_class == 'skin-1') {
+		    $('.ace-nav > li.grey').addClass('dark');
+	    }
+		*/
+      });
+		 </script>
+	</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title> 管控平台-用户个人设置</title>
+
+        <meta name="description" content="Minimal empty page" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- basic styles -->
+
+        <link href="{$webroot}assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{$webroot}assets/css/font-awesome.min.css" />
+
+        <!--[if IE 7]>
+          <link rel="stylesheet" href="{$webroot}assets/css/font-awesome-ie7.min.css" />
+        <![endif]-->
+
+        <!-- page specific plugin styles -->
+        <link rel="stylesheet" href="{$webroot}assets/css/datepicker.css" />
+        <link rel="stylesheet" href="{$webroot}assets/css/jquery.gritter.css" />
+
+        <!-- fonts -->
+
+        <link rel="stylesheet" href="{$webroot}assets/css/ace-fonts.css" />
+
+        <!-- ace styles -->
+
+        <link rel="stylesheet" href="{$webroot}assets/css/ace.min.css" />
+        <link rel="stylesheet" href="{$webroot}assets/css/ace-rtl.min.css" />
+        <link rel="stylesheet" href="{$webroot}assets/css/ace-skins.min.css" />
+
+        <!--[if lte IE 8]>
+          <link rel="stylesheet" href="{$webroot}assets/css/ace-ie.min.css" />
+        <![endif]-->
+
+        <!-- inline styles related to this page -->
+        <style>
+            .small-label {
+                font-size: 13px !important;
+                padding-top: 5px !important;
+                color: rgb(102, 126, 153) !important;
+            }
+        </style>
+
+        <!-- ace settings handler -->
+
+        <script src="{$webroot}assets/js/ace-extra.min.js"></script>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+        <!--[if lt IE 9]>
+        <script src="{$webroot}assets/js/html5shiv.js"></script>
+        <script src="{$webroot}assets/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <include file="./Tpl/header.html" />
+
+        <div class="main-container" id="main-container">
+            <script type="text/javascript">
+                try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+            </script>
+
+            <div class="main-container-inner">
+                <include file="./Tpl/sidebar.html" />
+
+                <div class="main-content">
+                    
+                    <div class="breadcrumbs hidden-480" id="breadcrumbs">
+                        <script type="text/javascript">
+                            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                        </script>
+
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-home home-icon"></i>
+                                <a href="#">首页</a>
+                            </li>
+                            <li class="active">用户个人设置</li>
+                        </ul><!-- .breadcrumb -->
+
+                        <div class="nav-search" id="nav-search">
+                            <form class="form-search">
+                                <span class="input-icon">
+                                    <input type="text" placeholder="搜索 ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                    <i class="icon-search nav-search-icon"></i>
+                                </span>
+                            </form>
+                        </div><!-- #nav-search -->
+                    </div>
+                    
+                    <div class="page-content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <!-- PAGE CONTENT BEGINS -->
+                                <div>
+                                    <div id="user-profile-2" class="user-profile">
+                                        <div class="tabbable">
+                                            <ul class="nav nav-tabs padding-18">
+                                                <li class="active">
+                                                    <a data-toggle="tab" href="#user-info">
+                                                        <i class="green icon-user bigger-120"></i>
+                                                        用户信息
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a data-toggle="tab" href="#change-password">
+                                                        <i class="orange icon-rss bigger-120"></i>
+                                                        修改密码
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content no-border padding-24">
+                                                <div id="user-info" class="tab-pane in active">
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-3 center">
+                                                            <span class="profile-picture">
+															    <i class="icon-user bigger-300"></i>
+                                                                <!--img class="editable img-responsive" alt="Alex's Avatar" id="avatar2" src="{$webroot}assets/avatars/avatar_box.jpg" /-->
+                                                            </span>
+
+                                                            <div class="space space-4"></div>
+
+                                                            <a href="javascript:changeInfo()" class="btn btn-sm btn-block btn-primary" id="start-change">
+                                                                <i class="icon-cog"></i>
+                                                                <span class="bigger-110">修改信息</span>
+                                                            </a>
+                                                            
+                                                            <a href="javascript:submitChangeInfo()" class="btn btn-sm btn-block btn-primary hide" id="submit-change">
+                                                                <i class="icon-check"></i>
+                                                                <span class="bigger-110">提交修改</span>
+                                                            </a>
+                                                            
+                                                            <a href="javascript:cancelChangeInfo()" class="btn btn-sm btn-block btn-warning hide" id="cancel-change">
+                                                                <i class="icon-reply"></i>
+                                                                <span class="bigger-110">取消</span>
+                                                            </a>
+                                                        </div><!-- /span -->
+
+                                                        <div class="col-xs-12 col-sm-9">
+                                                            <h4 class="blue">
+                                                                <span class="middle">
+                                                                            <if condition="($userInfo['nickname'] eq '')"> 昵称未设置
+                                                                            <else /> {$userInfo["nickname"]}
+                                                                            </if></span>
+
+                                                                <span class="label label-purple arrowed-in-right">
+                                                                    <i class="icon-circle smaller-80 align-middle"></i>
+                                                                    {$userInfo["groupname"]}
+                                                                </span>
+                                                            </h4>
+
+                                                            <div class="profile-user-info" id="show-user-info">
+                                                                <div class="profile-info-row">
+                                                                    <div class="profile-info-name"> 用户名 </div>
+
+                                                                    <div class="profile-info-value">
+                                                                        <span>{$userInfo["login_name"]}</span>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="profile-info-row">
+                                                                    <div class="profile-info-name"> 昵称 </div>
+
+                                                                    <div class="profile-info-value">
+                                                                        <span>
+                                                                            <if condition="($userInfo['nickname'] eq '')"> 空
+                                                                            <else /> {$userInfo["nickname"]}
+                                                                            </if>
+                                                                          </span>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="profile-info-row">
+                                                                    <div class="profile-info-name"> 电子邮箱 </div>
+
+                                                                    <div class="profile-info-value">
+                                                                        <span>
+                                                                            <if condition="($userInfo['email'] eq '')"> 空
+                                                                            <else /> {$userInfo["email"]}
+                                                                            </if>
+                                                                          </span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="profile-info-row">
+                                                                    <div class="profile-info-name"> 加入时间 </div>
+
+                                                                    <div class="profile-info-value">
+                                                                        <span> {$userInfo["create_date"]} &nbsp;</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="profile-info-row">
+                                                                    <div class="profile-info-name"> 上次登录 </div>
+
+                                                                    <div class="profile-info-value">
+                                                                        <span>3 小时前</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="hr hr-8 dotted" id="show-user-info-slash"></div>
+                                                    <form class="form-horizontal hide" role="form" id="edit-form">
+                                    
+                                                        <div class="form-group">
+                                                          <label class="col-sm-2 control-label no-padding-right small-label" for="form-nick-name">昵称</label>
+                                                          <div class="col-sm-9">
+                                                            <input data-rel="tooltip" type="text" id="form-nick-name" placeholder="昵称" title="请填写昵称" value="{$userInfo["nickname"]}" data-placement="bottom" class="col-xs-10 col-sm-5" />
+                                                          </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                          <label class="col-sm-2 control-label no-padding-right small-label" for="form-email">电子邮箱</label>
+                                                          <div class="col-sm-9">
+                                                            <input data-rel="tooltip" type="text" id="form-email" placeholder="email" title="email" data-placement="bottom" value="{$userInfo["email"]}" class="col-xs-10 col-sm-5" />
+                                                          </div>
+                                                        </div>
+                                                        
+                                                    </form>
+                                                    
+                                                        </div><!-- /span -->
+                                                    </div><!-- /row-fluid -->
+
+                                                    <div class="space-20"></div>
+                                                </div><!-- #home -->
+
+                                                <div id="change-password" class="tab-pane">
+                                                    <div class="profile-feed row-fluid">
+                                                        <form class="form-horizontal" role="form" id="change-password-form">
+                                                            <div class="form-group">
+                                                                <span class="col-sm-3"></span>
+                                                                <label class="col-sm-2 control-label no-padding-right small-label" for="cp-form-original-password"> 原密码 </label>
+                                                                <div class="col-sm-6">
+                                                                    <input type="password" id="cp-form-original-password" placeholder="原密码" class="col-xs-10 col-sm-5" />
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="form-group">
+                                                                <span class="col-sm-3"></span>
+                                                                <label class="col-sm-2 control-label no-padding-right small-label" for="cp-form-new-password"> 新密码 </label>
+                                                                <div class="col-sm-6">
+                                                                    <input type="password" id="cp-form-new-password" placeholder="新密码" class="col-xs-10 col-sm-5" />
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="form-group">
+                                                                <span class="col-sm-3"></span>
+                                                                <label class="col-sm-2 control-label no-padding-right small-label" for="cp-form-retype-password"> 重复输入新密码 </label>
+                                                                <div class="col-sm-6">
+                                                                    <input type="password" id="cp-form-retype-password" placeholder="重复输入新密码" class="col-xs-10 col-sm-5" />
+                                                                </div>
+                                                            </div>
+                                                         </form>
+                                                    </div><!-- /row -->
+
+                                                    <div class="space-12"></div>
+
+                                                    <div class="center">
+                                                        <a href="javascript:changePassword()" class="btn btn-small btn-primary">
+                                                            确认修改
+                                                        </a>
+                                                    </div>
+                                                </div><!-- /#feed -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- PAGE CONTENT ENDS -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.page-content -->
+                </div><!-- /.main-content -->
+                
+            </div><!-- /.main-container-inner -->
+        </div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='{$webroot}assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+</script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='{$webroot}assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+    if("ontouchend" in document) document.write("<script src='{$webroot}assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="{$webroot}assets/js/bootstrap.min.js"></script>
+<script src="{$webroot}assets/js/typeahead-bs2.min.js"></script>
+
+<!-- page specific plugin scripts -->
+<script src="{$webroot}assets/js/fuelux/fuelux.spinner.min.js"></script>
+<script src="{$webroot}assets/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="{$webroot}assets/js/date-time/locales/bootstrap-datepicker.zh-CN.js"></script>
+<script src="{$webroot}assets/js/jquery.gritter.min.js"></script>
+<script src="{$webroot}assets/js/md5.js"></script>
+
+<!-- ace scripts -->
+
+<script src="{$webroot}assets/js/ace-elements.min.js"></script>
+<script src="{$webroot}assets/js/ace.min.js"></script>
+
+<!-- inline scripts related to this page -->
+<script>
+    jQuery(function($) {
+        updateHeader();
+        $('[data-rel=tooltip]').tooltip({container:'body'});
+        
+        $('#form-output').ace_spinner({value:1,min:0.6,max:10,step:0.1, btn_up_class:'btn-info' , btn_down_class:'btn-info'}).on('change', function(){
+            this.value = Math.round(this.value*10)/10;
+        });
+                
+        $('.date-picker').datepicker({autoclose:true,language:"zh-CN",format:"yyyy-mm-dd",weekStart:1}).next().on(ace.click_event, function(){
+            $(this).prev().focus();
+        });
+    });
+      
+    jQuery(document).ready(function(){
+	  /*
+      var body = $(document.body);
+      body.removeClass('skin-1 skin-2 skin-3');
+      skin_class = 'skin-1';
+      if(skin_class != 'default') body.addClass(skin_class);
+      if(skin_class == 'skin-1') {
+          $('.ace-nav > li.grey').addClass('dark');
+      }
+	  */
+    });
+    
+    var showList = ["show-user-info","show-user-info-slash","s4-name",
+    "s4-name-slash","show-box-info","show-box-info-slash","show-record-info","start-change"];
+    var editList = ["edit-form","submit-change","cancel-change"];
+    
+    function changeInfo(){
+      for(var key in showList){
+          $("#"+showList[key]).addClass("hide");
+      }
+      for(var key in editList){
+          $("#"+editList[key]).removeClass("hide");
+      }
+    }
+    
+    function submitChangeInfo(){
+        var email = $("#form-email").val();
+        if(email != ""){
+            if(!emailFormatCheck(email)){
+              showUiResult("请输入正确信息","邮箱地址不正确");
+              return;
+            }
+        }
+      
+        var postData = Object();
+        $("#edit-form input").each(function(index){
+            if($("#"+this.id).val() != ""){
+                postData[this.id] = $("#"+this.id).val();
+            }
+        });
+        
+        $("#edit-form select").each(function(index){
+            if($("#"+this.id).val() != ""){
+                postData[this.id] = $("#"+this.id).val();
+            }
+        });
+        
+         $.post("{$webroot}user/api_info_change", postData,function(data){
+            var jsonObj = eval("("+data+")");
+            showUiResult(jsonObj.title,jsonObj.comment);
+            //showUiResult("debug",data);
+        });
+    }
+      
+    function cancelChangeInfo(){
+        for(var key in editList){
+            $("#"+editList[key]).addClass("hide");
+        }
+        for(var key in showList){
+            $("#"+showList[key]).removeClass("hide");
+        }
+    }
+      
+    function changePassword(){
+        var postData = Object();
+        var checkPass = true;
+        $("#change-password-form input").each(function(index){
+            if($("#"+this.id).val() != ""){
+                postData[this.id] = faultylabs.MD5($("#"+this.id).val());
+            }else if(checkPass == true){
+                showUiResult("操作异常","请完整填写表单");
+                checkPass = false;
+            }
+        });
+        
+        if(checkPass == true){
+            if($("#cp-form-new-password").val() != $("#cp-form-retype-password").val()){
+                showUiResult("操作异常","重复输入密码不一致");
+                checkPass = false;
+            }
+        }
+        
+        if(checkPass == true){
+            $.post("{$webroot}user/api_password_change", postData,
+            function(data){
+                var jsonObj = eval("("+data+")");
+                showUiResult(jsonObj.title,jsonObj.comment);
+            });
+        }
+    }
+      
+    function showUiResult(title, content){
+        $.gritter.add({title: title, text: content, class_name: 'gritter-success gritter-light' });
+    }
+      
+    function emailFormatCheck(email){
+        if ((email.length > 128) || (email.length < 6)) {
+            return false;
+        }
+        var format = /^[A-Za-z0-9+]+[A-Za-z0-9\.\_\-+]*@([A-Za-z0-9\-]+\.)+[A-Za-z0-9]+$/;
+        if (!email.match(format)) {
+            return false;
+        }
+        return true;
+    }
+    </script>
+    </body>
+</html>

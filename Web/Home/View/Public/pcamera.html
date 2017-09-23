@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+        <meta name="HandheldFriendly" content="True">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="cleartype" content="on">
+    
+		<title>微信相机</title>
+		<!-- basic styles -->
+        <link rel="stylesheet" href="/assets/bbs.2.2.0/lungo.css">
+        <link rel="stylesheet" href="/assets/bbs.2.2.0/lungo.icon.css">
+        <link rel="stylesheet" href="/assets/bbs.2.2.0/lungo.theme.css">
+		<!-- page specific plugin styles -->
+
+		<!-- fonts -->
+        
+		<!-- inline styles related to this page -->
+        <style>
+        #main_section {
+            background-color: whitesmoke !important;
+        }
+        #pull {
+            position: absolute;
+            z-index:0;
+            top: 76px;
+            color:black;
+            left:1.6em;
+            right:1.6em;
+            text-align: center;
+        }
+        </style>
+	</head>
+
+	<body>
+
+<section id="main_section" data-aside="menu" data-transition="slide">
+    <div id="pull"></div>
+
+    <header data-title="微信相机">
+        <nav>
+            <!--button data-view-aside="menu" data-icon="menu"></button-->
+            <!--button data-view-aside="menu" data-icon="map-marker"></button-->
+        </nav>
+        <nav class="on-right">
+            <!--button data-view-aside="boards">板块...&nbsp;</button-->
+        </nav>
+    </header>
+    <article id="main-article" class="active indented">
+    
+        <div class="layout">
+            <div data-layout="secondary" style="background: #bbb;">&nbsp;</div>
+            <div style="-webkit-box-flex: 0; padding-bottom:.5em;"></div>
+            <div style="-webkit-box-flex: 0;">
+                <a href="javascript:shoot();" class="button anchor accept margin-bottom">开启拍照</a>
+                <a href="javascript:shoot();" class="button anchor disabled margin-bottom">关闭拍照</a>
+            </div>
+            <div style="-webkit-box-flex: 0; padding-bottom:2.5em;"></div>
+        </div>
+    
+    </article>
+    <footer id="bbs-footer"><div class="layout horizontal">
+        <div style="color:black; margin-right:0px; padding-right:0px">&nbsp;新话题:</div>
+        <div class="box-2"><input type="text" class="bbs-input" /></div>
+        <div style='font: 26px/1.25 "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important; color:black !important;padding-top:.2em;'><span class="icon plus-sign"></span></div>
+        </div>
+    </footer>
+</section>
+
+<aside id="menu">
+    <header data-title="设置"></header>
+    <article class="active list">
+        <ul>
+            <li><a href="javascript:currentBBS();">当前论坛</a></li>
+            <li><a href="javascript:goSecondArticle();">附近区域</a></li>
+            <li>我的轨迹</li>
+            <li>帐号设置</li>
+        </ul>
+    </article>
+</aside>
+
+<aside id="boards" data-transition="right">
+    <header data-title="论坛板块"></header>
+    <article class="active list scroll">
+        <ul>
+            <li><a href="#">闲聊</a></li>
+            <li><div class="tag on-right">22</div><a href="#">兴趣爱好</a></li>
+            <li><a href="#">活动</a></li>
+            <li><a href="#">附近景点</a></li>
+            <li><a href="#">附近商铺</a></li>
+            <li><a href="#">附近美食</a></li>
+            <li><a href="#">附近外卖</a></li>
+            <li><a href="#">跳骚市场</a></li>
+            <li><a href="#">推荐</a></li>
+        </ul>
+    </article>
+</aside>
+
+		<!-- basic scripts -->
+        <script src="/assets/bbs.2.2.0/quo.js"></script>
+        <script src="/assets/bbs.2.2.0/lungo.js"></script>
+        <script src="http://112.124.47.197:82/socket.io/socket.io.js"></script>
+		<!-- page specific plugin scripts -->
+        
+		<!-- inline scripts related to this page -->
+		<script>
+        Lungo.init({});
+        Lungo.ready(function() {
+            //Lungo.Aside.show("menu");
+            window.WebView.showToast("here");
+            $$("#bbs-footer").hide();
+            window.WebView.coverOut();
+  
+            //var htmlStr = '<article id="second" class="list"><ol><li>dfdfsd</li><li>dfdfdfsdfsd</li></ol><button data-view-aside="price" data-icon="shopping-cart"></button></article>';
+            //Lungo.dom("#main_section").append(htmlStr);
+            //Lungo.Boot.Data.init("#second");
+        });
+        
+        var afterNotification = function(){
+            //Do something
+            Lungo.Notification.hide();
+        };
+        
+        var currentBBS = function(){
+            Lungo.Aside.hide();
+            $$("#bbs-footer").show();
+        }
+        
+        var goSecondArticle = function(){
+            Lungo.Article.clean("main-article", "refresh", "更新中...", "", "");
+            Lungo.Aside.hide();
+            $$("#bbs-footer").hide();
+        }
+        
+        var shoot = function(){
+            window.WebView.capture();
+            window.WebView.showToast("here");
+        }
+        
+        var cameraId = "";
+        
+        var startCamera = function(_cid){
+            cameraId = _cid;
+            
+            var socket = io.connect('http://112.124.47.197:82',{query: "cameraid="+cameraId+"&test=abc"});
+            socket.on('command', function (data) {
+	            socket.emit('command_return', { status: '200' });
+                shoot();
+            });
+        }
+        /*
+        var pullList = new Lungo.Element.Pull('#main-article', {
+            onPull: "下拉拍照",      //Text on pulling
+            onRelease: "松开获取新照片",//Text on releasing
+            onRefresh: "拍照中...",          //Text on refreshing
+            callback: function() {               //Action on refresh
+                //alert("Pull & Refresh completed!");
+                pullList.hide();
+            }
+        });*/
+		</script>
+	</body>
+</html>

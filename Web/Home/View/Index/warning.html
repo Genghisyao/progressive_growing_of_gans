@@ -1,0 +1,1681 @@
+﻿<!DOCTYPE html>
+<!--[if IE 9 ]>
+<html class="ie9">
+<![endif]-->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="UTF-8">
+
+        <meta name="description" content="Violate Responsive Admin Template">
+        <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+        <title>信号分析</title>
+            
+        <!-- CSS -->
+        
+        <link href="{$webroot}assets/css/animate.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="{$webroot}assets/css/form.css" rel="stylesheet"> -->
+
+        <link href="{$webroot}assets/css/file-manager.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/style.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/icons.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/generics.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/jquery.dataTables.css" rel="stylesheet">
+        <style type="text/css">
+            #content {margin-left: 0}
+            .elfinder-button-icon-totrainset, .elfinder-button-icon-tobussnset {
+                width: 100%;
+                border: rgba(255, 255, 255, 0.8);
+                border-style: solid;
+                border-width: 1px;
+                padding: 3px 5px 3px 5px;
+                color: rgba(255, 255, 255, 0.8);
+                background-color: rgba(255, 0, 0, 0.2);
+            }
+            .ui-state-disabled .elfinder-button-icon-totrainset, .ui-state-disabled .elfinder-button-icon-tobussnset {
+                border: white;
+                border-style: solid;
+                border-width: 1px;
+                color: white;
+                background-color: rgba(255, 0, 0, 0);
+            }
+
+            #skin-blur-white{
+                color: #666666;
+            }
+            #skin-blur-white .elfinder-toolbar{
+                border-bottom: 1px solid #ddd;
+               /* border-top: 1px solid #ddd;*/
+            }
+            #skin-blur-white .elfinder-navbar{
+                border-right: 1px solid #ddd;
+            }
+            #skin-blur-white .file-search{
+                border: 1px solid #ddd;
+                color: #666666;
+            }
+            #skin-blur-white .elfinder-cwd-filename{
+                color: #666666;
+            }
+            /*           舆情
+*/           #skin-blur-white #main,#skin-blur-white #content{
+            width: 100%;
+            height: 100%;
+           }
+           #skin-blur-white #content{
+            padding: 10px;
+           }
+           /*#skin-blur-white #content>div{
+            padding: 0px 5px;
+           }*/
+           #skin-blur-white #eventList,#skin-blur-white #eventMessage{
+            border:1px solid #ddd;
+            background-color: #fff;
+            width: 100%;
+            border-radius: 5px !important;
+           }
+           #skin-blur-white .title{
+            border-bottom: 1px solid #ddd;
+            padding-left: 20px;
+           }
+           #skin-blur-white .title p{
+            margin: 0px;
+            display: inline-block;
+            padding: 10px 20px 5px 0px;
+            border-bottom: 1px solid #435f76;
+            color: #435f76;
+            font-size: 18px;
+            
+           }
+           #skin-blur-white #eventList .body>div{
+            padding: 10px 0px;
+            color: #666;
+            border-bottom: 1px solid #ddd;
+           }
+           #skin-blur-white #eventList .body{
+            padding: 0px 20px;
+           }
+           #skin-blur-white .body label{
+            color: #666;
+            font-weight: 600;
+            font-size: 13px;
+           }
+           #skin-blur-white .form-control{
+            border:1px solid #ddd;
+            background-color: #fff;
+            background: #fff;
+            color: #666;
+            box-shadow: none;
+            border-radius: 5px!important;
+           }
+           #skin-blur-white .form-control:focus{
+            border:1px solid rgba(67, 95, 118,0.6);
+            box-shadow: 0px 0px 5px #435f76;
+           }
+           #skin-blur-white form{
+            padding: 10px 20px;
+           }
+           #skin-blur-white #submit{
+            background-color: #fff;
+            background: #fff;
+            border:1px solid rgba(67, 95, 118,0.6);
+            color: rgb(67, 95, 118);
+            border-radius: 5px!important;
+           }
+           #skin-blur-white #submit:hover{
+            box-shadow: 0px 0px 5px rgba(67, 95, 118,0.6);
+           }
+           #skin-blur-white #submit:active{
+            background-color:rgba(67, 95, 118,0.6);
+            color: #fff;
+           }
+           #skin-blur-white div.form-group{
+            margin-bottom: 20px;
+           }
+           #skin-blur-white #eventTitle,#skin-blur-white #eventBody{
+            width: 100%;
+            
+           }
+           #skin-blur-white #eventBody td,#skin-blur-white #eventTitle th{
+            padding:5px 10px;
+            /*text-align: center;*/
+           }
+          
+           #skin-blur-white #eventTitle tr,#skin-blur-white #eventBody tr{
+            width: 100%;
+            padding: 5px 0px;
+            
+           }
+           #skin-blur-white #eventBody tr{
+            border-top: 1px solid #ddd;
+           }
+           
+
+           #skin-blur-white #eventBody a{
+            color: #666;
+            display: block;
+           }
+           #skin-blur-white #eventBody a:focus,#skin-blur-white #eventBody a:hover{
+            color: #435f76;
+            text-decoration: underline;
+           }
+           .num{
+            min-width: 100px;
+            text-align: center;
+           }
+           
+           td {
+               padding: 5px 10px;
+           }
+           p{
+            margin: 0px;
+            padding: 0px!important;
+           }
+           #content>div{
+            width: 100%;
+            height: 100%;
+           }
+           #content>div:not(#signal){
+            border:1px solid #ddd;
+            background-color: #fff;
+            border-radius: 5px!important;
+           }
+           input[type="checkbox"], input[type="radio"]{
+            opacity: 1;
+           }
+           label{margin: 0px;}
+           a,a:hover,a:focus{
+            color: #666;
+            text-decoration: none;
+           }
+           .warningTitle{
+            padding-left: 20px;
+            border-bottom: 1px solid #ddd;
+           }
+           .warningTitle p{
+            color: #435f76;
+            font-size: 18px;
+            display: inline-block;
+            border-bottom: 1px solid #435f76;
+           }
+           .add,.add:hover,.add:focus{
+            color: #47a447;
+           }
+           .add:hover,.add:focus{
+            text-decoration: underline;
+           }
+           .chooseBox{
+            padding-right: 10px;
+           }
+           label{
+            font-weight: 400;
+           }
+           .groups>div{display: inline;}
+           .wrongReg{
+            border:1px solid #d74b4b!important;
+            box-shadow: 0px 0px 5px #d74b4b!important;
+           }
+           #signal>div>div{
+            background-color: #fff;
+            border:1px solid #ddd;
+            border-radius: 5px!important;
+           }
+           #signal th,#signal table{
+            border-bottom-style: none;
+           }
+           /*#thresholdSet table{width: auto;white-space:nowrap}*/
+          #thresholdSet .form-control{width: 100px;}
+          #thresholdSet .selectControl{width: 110px;}
+          #thresholdSet .form-group{margin-bottom: 0px!important;}
+          #thresholdSet label.col-md-1{padding-left: 0px;padding-right: 0px;}
+          .levalTd label{min-width: 100px;}
+          .mediaTableBody tr td:nth-child(2) label{min-width: 90px;}
+          .emotion .form-control{width: 100%!important;}
+          .emotion tr td:nth-child(3){width: 500px;}
+          .help-block{display: none;color: #d74b4b}
+          #thresholdBtn{margin: 10px;}
+          ::selection { background:lightblue; color:white;}
+        </style>
+
+    </head>
+    
+    <body style="background-color: rgba(255, 255, 255, 0);" id="skin-blur-white">
+        <section id="main" class="p-relative" role="main">
+            <!-- Content -->
+            <section id="content" class="container">
+              <div id="signal">
+                <div class="col-md-12">
+                  <div>
+                    <div class="title">
+                      <p>热度预警信号</p>
+                    </div>
+                    <div class="">
+                      <table id="heatTable" style="width: 100%;" class="table-striped table-hover">
+                        <thead>
+                          <tr>
+                            <th>预警时间</th>
+                            <th>事件</th>
+                            <th class="text-center">热度</th>
+                            <th>原因</th>
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12" style="margin: 10px 0 10px 0;">
+                  <div id="">
+                    <div class="title">
+                      <p>媒体预警信号</p>
+                    </div>
+                    <div class="">
+                      <table id="mediaTable" style="width: 100%;" class="table-striped table-hover">
+                        <thead>
+                          <tr>
+                            <th>预警时间</th>
+                            <th>事件</th>
+                            <th class="text-center">指标类型</th>
+                            <th class="text-center">阈值</th>
+                            <th class="text-center">现值</th>
+                            <th>原因</th>
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div id="">
+                    <div class="title">
+                      <p>地域预警信号</p>
+                    </div>
+                    <div class="">
+                      <table id="areaTable" style="width: 100%;" class="table-striped table-hover">
+                        <thead>
+                          <tr>
+                            <th>预警时间</th>
+                            <th>事件</th>
+                            <th class="text-center">指标类型</th>
+                            <th class="text-center">阈值</th>
+                            <th class="text-center">现值</th>
+                            <th>原因</th>
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12" style="margin: 10px 0 10px 0;">
+                  <div id="">
+                    <div class="title">
+                      <p>敏感词预警信号</p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div id="keyWarning" style="display: none;">
+                <div class="warningCondition">
+                  <div class="warningTitle"><p>预警条件</p></div>
+                  <form class="form-horizontal">
+                    <div class="form-group">
+                      <label for="" class="col-sm-1 control-label" style="padding-left: 0px;padding-right: 0px;">关键词</label>
+                      <div class="col-sm-11">
+                        <input type="" class="form-control" id="keywords" placeholder="输入关键词">
+                        <span id="helpBlock" class="help-block" style="display: none;color: green;margin: 5px 0px 0px 0px;">每个关键词之间用逗号隔开。</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="col-sm-1 control-label" style="padding-left: 0px;padding-right: 0px;">舆情属性</label>
+                      <div class="col-sm-11 attribute" style="padding-top: 7px;">
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="positive">
+                          正面
+                        </label>
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="neutral">
+                          中立
+                        </label>
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="negative">
+                          负面
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="col-sm-1 control-label" style="padding-left: 0px;padding-right: 0px;">媒体类别</label>
+                      <div class="col-sm-11 mediaType" style="padding-top: 7px;">
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="weibo.com">
+                          新浪微博
+                        </label>
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="zhihu.com">
+                          知乎
+                        </label>
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="wx.qq.com">
+                          微信
+                        </label>
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="tieba.baidu.com">
+                          百度贴吧
+                        </label>
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="news.sina.com.cn">
+                          新浪新闻
+                        </label>
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="news.qq.com">
+                          腾讯新闻
+                        </label>
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="people.com.cn">
+                          人民网
+                        </label>
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="news.ifeng.com">
+                          凤凰网
+                        </label>
+                        <label class="chooseBox">
+                          <input type="checkbox" value="" name="news.163.com">
+                          网易新闻
+                        </label>
+                        <label class="chooseBox">
+                          <input type="checkbox" name="" name="bbs.tianya.cn">
+                          天涯论坛
+                        </label>
+                      </div>
+                    </div>
+                </form>
+                </div>
+                <div class="warningMethod">
+                  <div class="warningTitle"><p>预警方式</p></div>
+                  <form class="form-horizontal">
+                    <div class="form-group">
+                      <label for="email" class="col-sm-1 control-label" style="padding-top: 0px;padding-left: 0px;padding-right: 0px;">邮件预警</label>
+                      <div class="col-sm-11">
+                        <label><input type="checkbox" value="" id="keywordE">开设预警</label>
+                        <a href="#" class="add">新增地址</a>
+                        <div class="groups keywordEmail">
+                          <div>
+                            <div class="input-group" style="width: 200px;display: inline-table;margin-right:5px;">
+                              <input type="email" class="form-control" style="border-radius: 0px!important;" onblur="checkReg(this);">
+                              <div class="input-group-addon"><span aria-hidden="true"><a href="#" class="delete">&times;</a></span></div>
+                            </div>
+                            <span style="display:none;color: #d74b4b;margin: 0px;">请输入正确的邮箱地址。</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="message" class="col-sm-1 control-label" style="padding-top: 0px;padding-left: 0px;padding-right: 0px;">短信预警</label>
+                      <div class="col-sm-11">
+                        <label><input type="checkbox" value="" id="keywordM">开设预警</label>
+                        <a href="#" class="add">新增号码</a>
+                        <div class="groups keywordMessage">
+                          <div>
+                            <div class="input-group" style="width: 200px;display: inline-table;margin-right:5px;">
+                              <input type="text" class="form-control" style="border-radius: 0px!important;" onblur="checkReg(this);">
+                              <div class="input-group-addon"><span aria-hidden="true"><a href="#" class="delete">&times;</a></span></div>
+                            </div>
+                            <span style="display:none;color: #d74b4b;margin: 0px;">请输入正确的电话格式。</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="gzh" class="col-sm-1 control-label" style="padding-left: 0px;padding-top: 0px;padding-right: 0px;">公众号预警</label>
+                      <div class="col-sm-11">
+                        <label><input type="checkbox" value="" id="keywordWechat">开设预警</label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="text-center">
+                  <div class="btn btn-success" class="saveBtn" onclick="keywordSend();">保存</div>
+                
+                </div>
+              </div>
+              <div id="lineWarning" style="display: none;">
+                <div class="warningCondition">
+                  <div class="warningTitle"><p>预警条件</p></div>
+                    <form class="form-horizontal">
+                      <div class="form-group">
+                        <label for="" class="col-sm-1 control-label" style="padding-left: 0px;padding-right: 0px;">热度</label>
+                        <div class="col-sm-11">
+                          <select class="form-control" style="width: 200px;" id="heat">
+                            <option value="1">红色预警</option>
+                            <option value="2">橙色预警</option>
+                            <option value="3">黄色预警</option>
+                            <option value="4">蓝色预警</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="" class="col-sm-1 control-label" style="padding-left: 0px;padding-right: 0px;">媒体</label>
+                        <div class="col-sm-11">
+                          <select class="form-control" style="width: 200px;" id="media">
+                            <option value="1">红色预警</option>
+                            <option value="2">橙色预警</option>
+                            <option value="3">黄色预警</option>
+                            <option value="4">蓝色预警</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="" class="col-sm-1 control-label" style="padding-left: 0px;padding-right: 0px;">地域</label>
+                        <div class="col-sm-11">
+                          <select class="form-control" style="width: 200px;" id="area">
+                            <option value="1">红色预警</option>
+                            <option value="2">橙色预警</option>
+                            <option value="3">黄色预警</option>
+                            <option value="4">蓝色预警</option>
+                          </select>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                <div class="warningMethod">
+                  <div class="warningTitle"><p>预警方式</p></div>
+                  <form class="form-horizontal">
+                    <div class="form-group">
+                      <label for="email" class="col-sm-1 control-label" style="padding-top: 0px;padding-left: 0px;padding-right: 0px;">邮件预警</label>
+                      <div class="col-sm-11">
+                        <label><input type="checkbox" value="" id="lineE">开设预警</label>
+                        <a href="#" class="add">新增地址</a>
+                        <div class="groups lineEmail">
+                          <div>
+                            <div class="input-group" style="width: 200px;display: inline-table;margin-right:5px;">
+                              <input type="email" class="form-control" style="border-radius: 0px!important;" onblur="checkReg(this);">
+                              <div class="input-group-addon"><span aria-hidden="true"><a href="#" class="delete">&times;</a></span></div>
+                            </div>
+                            <span style="display:none;color: #d74b4b;margin: 0px;">请输入正确的邮箱地址。</span>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="message" class="col-sm-1 control-label" style="padding-top: 0px;padding-left: 0px;padding-right: 0px;">短信预警</label>
+                      <div class="col-sm-11">
+                        <label><input type="checkbox" value="" id="lineM">开设预警</label>
+                        <a href="#" class="add">新增号码</a>
+                        <div class="groups lineMessage">
+                          <div>
+                            <div class="input-group" style="width: 200px;display: inline-table;margin-right:5px;">
+                              <input type="text" class="form-control" style="border-radius: 0px!important;" onblur="checkReg(this);">
+                              <div class="input-group-addon"><span aria-hidden="true"><a href="#" class="delete">&times;</a></span></div>
+                            </div>
+                            <span style="display:none;color: #d74b4b;margin: 0px;">请输入正确的电话格式。</span>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="gzh" class="col-sm-1 control-label" style="padding-left: 0px;padding-top: 0px;padding-right: 0px;">公众号预警</label>
+                      <div class="col-sm-11">
+                        <label><input type="checkbox" value="" class="lineWechat">开设预警</label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="text-center">
+                  <div class="btn btn-success" onclick="lineWarningSend();">保存</div>
+                </div>
+              </div>  
+              <div id="thresholdSet" style="display: none;height: auto;">
+                <div class="hotThreshold">
+                  <div class="title"><p>指标阈值</p></div>
+                  <div class="bodyTable">
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for=""><img src="{$webroot}assets/img/icon/red.png">红色预警&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      </div>
+                      <div class="form-group">
+                        <label for="">评论数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">阅读数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">转发数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">热度：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                    </form>
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for=""><img src="{$webroot}assets/img/icon/orange.png">橙色预警&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      </div>
+                      <div class="form-group">
+                        <label for="">评论数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">阅读数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">转发数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">热度：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                    </form>
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for=""><img src="{$webroot}assets/img/icon/yellow.png">黄色预警&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      </div>
+                      <div class="form-group">
+                        <label for="">评论数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">阅读数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">转发数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">热度：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                    </form>
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for=""><img src="{$webroot}assets/img/icon/blue.png">蓝色预警&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      </div>
+                      <div class="form-group">
+                        <label for="">评论数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">阅读数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">转发数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">热度：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="mediaThreshold">
+                  <div class="title"><p>媒体阈值</p></div>
+                  <div class="bodyTable mediaTableBody" style="padding: 0px 10px;">
+                    <table>
+                      <tr>
+                        <td class="levalTd"><label for=""><img src="{$webroot}assets/img/icon/red.png">红色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">媒体类型：</label></td>
+                        <td>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="bbs.tianya.cn"> 天涯论坛
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.163.com"> 网易新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.ifeng.com"> 凤凰网
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.qq.com"> 腾讯新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.sina.com.cn"> 新浪新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="people.com.cn"> 人民网
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="tieba.baidu.com"> 百度贴吧
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="weibo.com"> 新浪微博
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="wx.qq.com"> 微信
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="zhihu.com "> 知乎
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="others"> 其他
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">来源数：</label></td>
+                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td class="levalTd"><label for=""><img src="{$webroot}assets/img/icon/orange.png">橙色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">媒体类型：</label></td>
+                        <td>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="bbs.tianya.cn"> 天涯论坛
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.163.com"> 网易新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.ifeng.com"> 凤凰网
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.qq.com"> 腾讯新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.sina.com.cn"> 新浪新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="people.com.cn"> 人民网
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="tieba.baidu.com"> 百度贴吧
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="weibo.com"> 新浪微博
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="wx.qq.com"> 微信
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="zhihu.com "> 知乎
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="others"> 其他
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">来源数：</label></td>
+                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td class="levalTd"><label for=""><img src="{$webroot}assets/img/icon/yellow.png">黄色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">媒体类型：</label></td>
+                        <td>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="bbs.tianya.cn"> 天涯论坛
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.163.com"> 网易新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.ifeng.com"> 凤凰网
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.qq.com"> 腾讯新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.sina.com.cn"> 新浪新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="people.com.cn"> 人民网
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="tieba.baidu.com"> 百度贴吧
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="weibo.com"> 新浪微博
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="wx.qq.com"> 微信
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="zhihu.com "> 知乎
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="others"> 其他
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">来源数：</label></td>
+                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td class="levalTd"><label for=""><img src="{$webroot}assets/img/icon/blue.png">蓝色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">媒体类型：</label></td>
+                        <td>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="bbs.tianya.cn"> 天涯论坛
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.163.com"> 网易新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.ifeng.com"> 凤凰网
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.qq.com"> 腾讯新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="news.sina.com.cn"> 新浪新闻
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="people.com.cn"> 人民网
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="tieba.baidu.com"> 百度贴吧
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="weibo.com"> 新浪微博
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="wx.qq.com"> 微信
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="zhihu.com "> 知乎
+                          </label>
+                          <label class="checkbox-inline">
+                            <input type="checkbox" id="" value="others"> 其他
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">来源数：</label></td>
+                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="areaThreshold">
+                  <div class="title"><p>地域阈值</p></div>
+                  <div class="bodyTable">
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for=""><img src="{$webroot}assets/img/icon/red.png">红色预警&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      </div>
+                      <div class="form-group">
+                        <label for="">国外数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">省份数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">网民数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                    </form>
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for=""><img src="{$webroot}assets/img/icon/orange.png">橙色预警&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      </div>
+                      <div class="form-group">
+                        <label for="">国外数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">省份数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">网民数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                    </form>
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for=""><img src="{$webroot}assets/img/icon/yellow.png">黄色预警&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      </div>
+                      <div class="form-group">
+                        <label for="">国外数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="text">省份数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">网民数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                    </form>
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for=""><img src="{$webroot}assets/img/icon/blue.png">蓝色预警&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      </div>
+                      <div class="form-group">
+                        <label for="">国外数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="text">省份数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">网民数：</label>
+                        <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="emotion eventEmotion">
+                  <div class="title"><p>事件情感阈值</p></div>
+                  <div class="bodyTable" style="padding: 0px 10px;">
+                    <table>
+                      <tr>
+                        <td><label for=""><img src="{$webroot}assets/img/icon/red.png">红色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">事件情感：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">敏感词：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td><label for=""><img src="{$webroot}assets/img/icon/orange.png">橙色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">事件情感：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">敏感词：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td><label for=""><img src="{$webroot}assets/img/icon/yellow.png">黄色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">事件情感：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">敏感词：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td><label for=""><img src="{$webroot}assets/img/icon/blue.png">蓝色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">事件情感：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">敏感词：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="emotion netizenEmotion">
+                  <div class="title"><p>网民情感阈值</p></div>
+                  <div class="bodyTable" style="padding: 0px 10px;">
+                    <table>
+                      <tr>
+                        <td><label for=""><img src="{$webroot}assets/img/icon/red.png">红色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">网民情感：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">敏感词：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td><label for=""><img src="{$webroot}assets/img/icon/orange.png">橙色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">网民情感：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">敏感词：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td><label for=""><img src="{$webroot}assets/img/icon/yellow.png">黄色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">网民情感：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">敏感词：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td><label for=""><img src="{$webroot}assets/img/icon/blue.png">蓝色预警&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                        <td><label for="">网民情感：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><label for="">敏感词：</label></td>
+                        <td>
+                          <input type="text" class="form-control" id="" placeholder="">
+                          <span class="help-block">关键词之间用逗号隔开。</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <button class="btn btn-primary" id="thresholdBtn" onclick="thresholdData();">提交</button>
+                </div>
+              </div>
+            </section>
+        </section>
+        
+        <!-- Javascript Libraries -->
+        <!-- jQuery -->
+        <script src="{$webroot}assets/js/jquery.min.js"></script> <!-- jQuery Library -->
+        <script src="{$webroot}assets/js/jquery-ui.min.js"></script> <!-- jQuery UI -->
+        
+        <!-- Bootstrap -->
+        <script src="{$webroot}assets/js/bootstrap.min.js"></script>
+        
+        
+        <!-- UX -->
+        <script src="{$webroot}assets/js/scroll.min.js"></script> <!-- Custom Scrollbar -->
+        <script src="{$webroot}assets/js/jquery.dataTables.min.js"></script>   <!-- datatables -->
+        
+        <!-- All JS functions -->
+
+        <script type="text/javascript">
+           window.onload=function(){
+              choose();
+
+              //提示词消失
+              $("input").focus(function(){
+                $(this).siblings(".help-block").show();
+              }).blur(function(){
+                $(this).siblings(".help-block").hide();
+              })
+
+              //help-text 
+              $("#keywords").focus(function(){$("#helpBlock").show()}).blur(function(){$("#helpBlock").hide()});
+
+              //增加地址
+              $(".add").each(function(){
+                
+                $(this).click(function(){
+                  var category=$(this).parent().siblings("label").attr('for');
+                  switch(category){
+                    case 'email':{
+                      $(this).siblings(".groups").append('<div><div class="input-group" style="width: 200px;display: inline-table;margin-right:5px;"><input type="email" class="form-control" style="border-radius: 0px!important;" onblur="checkReg(this);"><div class="input-group-addon"><span aria-hidden="true"><a href="#" class="delete">&times;</a></span></div></div><span style="display:none;color: #d74b4b;margin: 0px;">请输入正确的邮箱地址。</span></div>');
+                      break;
+                    }
+                    case 'message':{
+                      $(this).siblings(".groups").append('<div><div class="input-group" style="width: 200px;display: inline-table;margin-right:5px;"><input type="text" class="form-control" style="border-radius: 0px!important;" onblur="checkReg(this);"><div class="input-group-addon"><span aria-hidden="true"><a href="#" class="delete">&times;</a></span></div></div><span style="display:none;color: #d74b4b;margin: 0px;">请输入正确的电话格式。</span></div>');
+                      break;
+                    }
+                    default:{
+                      break;
+                    }
+                  }
+                  
+                });
+              });
+
+              //删除地址，删除号码
+              $(".groups").on('click','.input-group-addon',function(){
+                $(this).parent(".input-group").parent().remove();/*
+                $(this).parent(".input-group").siblings('span').remove();*/
+              })
+
+              $.ajax({
+                url:'/warning/api_get_warning',
+                dataType:'json',
+                type:'post',
+                success:function(result){
+                 /* console.log(result);*/
+                  $("#heatTable").dataTable({
+                      "bLengthChange": false, //改变每页显示数据数量
+                      "bFilter": false, //过滤功能
+                      "bPaginate" : false,
+                      "bProcessing": true,
+                      "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 1 ,3] }] ,
+                      "order":[[2, 'desc']],
+                      "bInfo": false,
+                      "createdRow": function( row, data, dataIndex ) {
+                            $(row).children('td').eq(2).attr('style', 'text-align: center;');
+                        },
+                      data:result.heat_warning,
+                      columns:[
+                          { 'data': 'warning_datetime'},
+                          { 'data': 'event_name'},
+                          { 'data': 'data_value'},
+                          { 'data': 'reason',"createdCell": function (td, cellData, rowData, row, col) {
+                                                                    var text=$(td).html();
+                                                                    switch(text){
+                                                                      case '热度红色预警':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">事件热度触发红色预警</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/red.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      case '热度橙色预警':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">事件热度触发橙色预警</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/orange.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      case '热度黄色预警':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">事件热度触发黄色预警</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/yellow.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      case '热度蓝色预警':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">事件热度触发蓝色预警</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/blue.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      default:{
+                                                                        break;
+                                                                      }
+                                                                    }
+                                                                },
+                          }
+
+                      ]
+                    })
+
+                  //媒体预警信号
+                  $("#mediaTable").dataTable({
+                      "bLengthChange": false, //改变每页显示数据数量
+                      "bFilter": false, //过滤功能
+                      "bPaginate" : false,
+                      "bProcessing": true,
+                      "aoColumnDefs": [ { "bSortable": false, "aTargets": [1,2,5,3,4] }] ,
+                      "order":[[0, 'desc']],
+                      "bInfo": false,
+                      "createdRow": function( row, data, dataIndex ) {
+                            $(row).children('td').eq(2).attr('style', 'text-align: center;');
+                            $(row).children('td').eq(3).attr('style', 'text-align: center;');
+                            $(row).children('td').eq(4).attr('style', 'text-align: center;');
+                        },
+                      data:result.media_warning,
+                      columns:[
+                          { 'data': 'warning_datetime'},
+                          { 'data': 'event_name'},
+                          {'data':'chi'},
+                          {'data':'threshold_value'},
+                          { 'data': 'data_value'},
+                          { 'data': 'reason',"createdCell": function (td, cellData, rowData, row, col) {
+                                                                    var text=$(td).html();
+                                                                    var logo='';
+                                                                    var regArr=[{name:'red',reg:/红/},{name:'orange',reg:/橙/},{name:'yellow',reg:/黄/},{name:'blue',reg:/蓝/}];
+                                                                    for(var i=0;i<regArr.length;i++){
+                                                                      if (regArr[i].reg.test(text)) {
+                                                                        logo=regArr[i].name;
+                                                                        break;
+                                                                      }
+                                                                    }
+                                                                    switch(logo){
+                                                                      case 'red':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">'+text+'</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/red.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      case 'orange':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">'+text+'</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/orange.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      case 'yellow':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">'+text+'</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/yellow.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      case 'blue':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">'+text+'</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/blue.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      default:{
+                                                                        break;
+                                                                      }
+                                                                    }
+                                                                },
+                          }
+
+                      ]
+                    })
+
+                  //地域预警信号
+                  $("#areaTable").dataTable({
+                      "bLengthChange": false, //改变每页显示数据数量
+                      "bFilter": false, //过滤功能
+                      "bPaginate" : false,
+                      "bProcessing": true,
+                      "aoColumnDefs": [ { "bSortable": false, "aTargets": [1,2,5,3,4] }] ,
+                      "order":[[0, 'desc']],
+                      "bInfo": false,
+                      "createdRow": function( row, data, dataIndex ) {
+                            $(row).children('td').eq(2).attr('style', 'text-align: center;');
+                            $(row).children('td').eq(3).attr('style', 'text-align: center;');
+                            $(row).children('td').eq(4).attr('style', 'text-align: center;');
+                        },
+                      data:result.area_warning,
+                      columns:[
+                          { 'data': 'warning_datetime'},
+                          { 'data': 'event_name'},
+                          {'data':'chi'},
+                          {'data':'threshold_value'},
+                          { 'data': 'data_value'},
+                          { 'data': 'reason',"createdCell": function (td, cellData, rowData, row, col) {
+                                                                    var text=$(td).html();
+                                                                    var logo='';
+                                                                    var regArr=[{name:'red',reg:/红/},{name:'orange',reg:/橙/},{name:'yellow',reg:/黄/},{name:'blue',reg:/蓝/}];
+                                                                    for(var i=0;i<regArr.length;i++){
+                                                                      if (regArr[i].reg.test(text)) {
+                                                                        logo=regArr[i].name;
+                                                                        break;
+                                                                      }
+                                                                    }
+                                                                    switch(logo){
+                                                                      case 'red':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">'+text+'</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/red.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      case 'orange':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">'+text+'</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/orange.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      case 'yellow':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">'+text+'</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/yellow.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      case 'blue':{
+                                                                        $(td).empty(); 
+                                                                        $(td).append('<p class="col-sm-10">'+text+'</p> <p class="col-sm-2"><img src="{$webroot}assets/img/icon/blue.png"></p>');
+                                                                        break;
+                                                                      }
+                                                                      default:{
+                                                                        break;
+                                                                      }
+                                                                    }
+                                                                },
+                          }
+
+                      ]
+                    })
+                }
+              })
+           }
+
+           //选择要显示的页面
+           function choose(){
+            var id="{$id}";
+            switch (id){
+              case 'signal':{
+                $("#signal").show();
+                $("#keyWarning").hide();
+                $("#lineWarning").hide();
+                $("#thresholdSet").hide();
+                break;
+              }
+              case 'keyWarning':{
+                $("#signal").hide();
+                $("#keyWarning").show();
+                $("#lineWarning").hide();
+                $("#thresholdSet").hide();
+                break;
+              }
+              case 'lineWarning':{
+                $("#signal").hide();
+                $("#keyWarning").hide();
+                $("#lineWarning").show();
+                $("#thresholdSet").hide();
+                break;
+              }
+              case 'thresholdSet':{
+                $("#thresholdSet").show();
+                $("#signal").hide();
+                $("#keyWarning").hide();
+                $("#lineWarning").hide();
+                getThresholdData();
+                break;
+              }
+              default:{
+                break;
+              }
+            }
+           }
+
+
+           //检查邮箱、电话的格式
+           function checkReg(item){
+            var category=item.type;
+            switch(category){
+              case 'email':{
+                var emailUrl=item.value;
+                var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/; 
+                if (!reg.test(emailUrl)&&emailUrl!='') {
+                  $(item).parent().siblings('span').show();
+                  $(item).addClass('wrongReg');
+                } else{
+                  $(item).parent().siblings('span').hide();
+                  $(item).removeClass('wrongReg');
+                }
+                break;
+              }
+              case 'text':{
+                var phoneNum=item.value;
+                var reg=/^1[3|4|5|8][0-9]\d{8}$/;
+                if (!reg.test(phoneNum)&&phoneNum!='') {
+                  $(item).parent().siblings('span').show();
+                  $(item).addClass('wrongReg');
+                } else{
+                  $(item).parent().siblings('span').hide();
+                  $(item).removeClass('wrongReg');
+                }
+                break;
+              }
+              default:{
+                break;
+              }
+            }
+            /*if (item.type=='email') {
+              $(item).parent().siblings('span').show();
+            }*/
+           }
+
+           //警戒线预警内容发送
+           function lineWarningSend(){
+            if (confirm("确定保存信息吗？")) {
+              if ($(".wrongReg").length) {
+                alert("请填写正确格式的信息");
+              }else{
+                var postData={};
+                var time;
+                time=new Date();
+                postData.add_datetime=time.getFullYear()+"-"+(time.getMonth()+1)+"-"+time.getDate()+" "+time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
+                postData.warning_type='line';
+                postData.condition=[];
+                postData.method=[];
+                postData.condition[0]={};
+                postData.condition[0].type='heat';
+                postData.condition[0].value=$("#heat").val();
+                postData.condition[1]={};
+                postData.condition[1].type='media';
+                postData.condition[1].value=$("#media").val();
+                postData.condition[2]={};
+                postData.condition[2].type='area';
+                postData.condition[2].value=$("#area").val();
+
+                postData.method[0]={};
+                postData.method[0].type='email';
+                postData.method[0].value=[];
+                if ($("#lineE").is(':checked')) {
+                  for(var i=0;i<$(".lineEmail input").length;i++){
+                    postData.method[0].value[i]=$(".lineEmail input").eq(i).val();
+                  }
+                }else{
+                  postData.method[0].value=null;
+                }
+
+                postData.method[1]={};
+                postData.method[1].type='message';
+                postData.method[1].value=[];
+                if ($("#lineM").is(':checked')) {
+                  
+                  for(var i=0;i<$(".lineMessage input").length;i++){
+                    postData.method[1].value[i]=$(".lineMessage input").eq(i).val();
+                  }
+                }else{
+                  postData.method[1].value=null;
+                }
+
+                postData.method[2]={};
+                postData.method[2].type='wechat';
+                
+                if($(".lineWechat").is(':checked')){
+                  postData.method[2].value=1;
+                }else{
+                  postData.method[2].value=0;
+                }
+                console.log(postData);
+                $.ajax({
+                  url:'/warning/line_warning_push',
+                  type:'post',
+                  dataType:'json',
+                  data:postData,
+                  success:function(result){
+                    console.log(result);
+                  }
+                })
+              }
+            }else{}
+            
+            
+           }
+
+           //关键词预警
+           function keywordSend(){
+             if (confirm("确定保存信息吗？")) {
+              if ($(".wrongReg").length) {
+                alert("请填写正确格式的信息");
+              }else{
+                var time;
+                var postData={};
+                time=new Date();
+                postData.add_datetime=time.getFullYear()+"-"+(time.getMonth()+1)+"-"+time.getDate()+" "+time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
+
+                postData.warning_type='keyword';
+                postData.condition=[];
+                postData.method=[];
+                postData.condition[0]={};
+                postData.condition[0].type='keyword';
+                postData.condition[0].value=$("#keywords").val();
+
+                postData.condition[1]={};
+                postData.condition[1].type='attribute';
+                postData.condition[1].value=[];
+                for(var i=0;i<$(".attribute input").length;i++){
+                  if ($(".attribute input").eq(i).is(':checked')) {
+                    postData.condition[1].value.push($(".attribute input").eq(i).attr("name"));
+                  }
+                }
+
+                postData.condition[2]={};
+                postData.condition[2].type='mediaType';
+                postData.condition[2].value=[];
+                for(var i=0;i<$(".mediaType input").length;i++){
+                  if ($(".mediaType input").eq(i).is(':checked')) {
+                    postData.condition[2].value.push($(".mediaType input").eq(i).attr("name"));
+                  }
+                }
+
+                postData.method[0]={};
+                postData.method[0].type='email';
+                postData.method[0].value=[];
+                if ($("#keywordE").is(':checked')) {
+                  for(var i=0;i<$(".keywordEmail input").length;i++){
+                    postData.method[0].value[i]=$(".keywordEmail input").eq(i).val();
+                  }
+                }else{
+                  postData.method[0].value=null;
+                }
+
+                postData.method[1]={};
+                postData.method[1].type='message';
+                postData.method[1].value=[];
+                if ($("#keywordM").is(':checked')) {
+                  
+                  for(var i=0;i<$(".keywordMessage input").length;i++){
+                    postData.method[1].value[i]=$(".keywordMessage input").eq(i).val();
+                  }
+                }else{
+                  postData.method[1].value=null;
+                }
+
+                postData.method[2]={};
+                postData.method[2].type='wechat';
+                
+                if($("#keywordWechat").is(':checked')){
+                  postData.method[2].value=1;
+                }else{
+                  postData.method[2].value=0;
+                }
+                console.log(postData);
+                $.ajax({
+                  url:'/warning/line_warning_push',
+                  type:'post',
+                  dataType:'json',
+                  data:postData,
+                  success:function(result){
+                    console.log(result);
+                  }
+                })
+              }
+            }else{}
+           }
+
+           //提交预警阈值数据
+           function thresholdData(){
+            var data=true;
+            var postData=[];
+            var hotThresholdForm=$(".hotThreshold").find("form");
+            var mediaTable=$(".mediaThreshold").find("table");
+            var areaForm=$(".areaThreshold").find("form");
+            var eventEmotionTable=$(".eventEmotion").find("table");
+            var netizenEmotionTable=$(".netizenEmotion").find("table");
+            for(var i=0;i<4;i++){
+              postData[i]={};
+              postData[i].threshold_channel=[];
+              postData[i].level=i+1;
+              if (hotThresholdForm.eq(i).find("input").eq(0).val()&&hotThresholdForm.eq(i).find("input").eq(1).val()&&hotThresholdForm.eq(i).find("input").eq(2).val()&&hotThresholdForm.eq(i).find("input").eq(3).val()) {
+                postData[i].threshold_reply=hotThresholdForm.eq(i).find("input").eq(0).val();
+                postData[i].threshold_read=hotThresholdForm.eq(i).find("input").eq(1).val();
+                postData[i].threshold_forward=hotThresholdForm.eq(i).find("input").eq(2).val();
+                postData[i].threshold_heat=hotThresholdForm.eq(i).find("input").eq(3).val();
+              }else{
+                data=false;
+                alert("请补充完整信息。");
+                break;
+              }
+
+              var channels=[];
+              var channelItems=mediaTable.eq(i).find("input[type='checkbox']");
+              for(var j=0;j<channelItems.length;j++){
+                if(channelItems.eq(j).is(':checked')){
+                  postData[i].threshold_channel.push(channelItems.eq(i).attr('value'));
+                }
+              }
+              postData[i].threshold_original=mediaTable.eq(i).find("input[type='text']").val();
+              if (postData[i].threshold_channel&&postData[i].threshold_original) {
+
+              }else{
+                data=false;
+                alert("请补充完整信息。");
+                break;
+              }
+
+
+              var areaInput=areaForm.eq(i).find("input");
+              if (areaInput.eq(0).val()&&areaInput.eq(1).val()&&areaInput.eq(2).val()) {
+                postData[i].threshold_foreign=areaInput.eq(0).val();
+                postData[i].threshold_province=areaInput.eq(1).val();
+                postData[i].threshold_netizen=areaInput.eq(2).val();
+              }else{
+                data=false;
+                alert("请补充完整信息。");
+                break;
+              }
+              
+
+              var eventInput=eventEmotionTable.eq(i).find('input');
+              if (eventInput.eq(0).val()&&eventInput.eq(1).val()) {
+                postData[i].event_nature=eventInput.eq(0).val();
+                postData[i].event_nature_word=eventInput.eq(1).val();
+              }else{
+                data=false;
+                alert("请补充完整信息。");
+                break;
+              }
+              
+
+              var netizenInput=netizenEmotionTable.eq(i).find('input');
+              if (netizenInput.eq(0).val()&&netizenInput.eq(1).val()) {
+                postData[i].netizen_emotion=netizenInput.eq(0).val();
+                postData[i].netizen_emotion_word=netizenInput.eq(1).val();
+              }else{
+                data=false;
+                alert("请补充完整信息。");
+                break;
+
+              }
+            }
+            /*console.log(postData);*/
+            if (data) {
+              alert("send data");
+
+              console.log(postData);
+              $.ajax({
+                url:'/warning/api_set_threshold',
+                data:{
+                  data:postData
+                },
+                dataType:'json',
+                type:'post',
+                success:function(result){
+                  console.log(result);
+                }
+              })
+            }
+            
+           }
+
+           //预警阈值加载
+           function getThresholdData(){
+            $.ajax({
+              url:'/warning/api_get_threshold',
+              postData:'json',
+              type:'post',
+              success:function(result){
+                var json=JSON.parse(result);
+                console.log(json);
+                //指标
+                var hotThresholdForm=$(".hotThreshold").find("form");
+                for(var i=0;i<hotThresholdForm.length;i++){
+                  hotThresholdForm.eq(i).find("input").eq(0).val(json[i].threshold_reply);
+                  hotThresholdForm.eq(i).find("input").eq(1).val(json[i].threshold_read);
+                  hotThresholdForm.eq(i).find("input").eq(2).val(json[i].threshold_forward);
+                  hotThresholdForm.eq(i).find("input").eq(3).val(json[i].threshold_heat);
+                }
+                //媒体
+                var mediaThresholdTable=$(".mediaThreshold").find("table");
+                for(var i=0;i<mediaThresholdTable.length;i++){
+                  var mediaArr=json[i].threshold_channel.split(",");
+                  var others=true;
+                  for(var j=0;j<mediaArr.length;j++){
+                    mediaThresholdTable.eq(i).find("input[value='"+mediaArr[j]+"']").attr("checked",true);
+                  }
+                  for(var j=0;j<mediaThresholdTable.eq(i).find("input[type='checkbox']").length;j++){
+                    if (mediaThresholdTable.eq(i).find("input[type='checkbox']").is(':checked')) {
+                      others=false;
+                      break;
+                    }
+                  }
+                  if (mediaArr.length>0&&others) {
+                    mediaThresholdTable.eq(i).find("input[value='others']").attr("checked",true);
+                  }
+                  mediaThresholdTable.eq(i).find("input[type='text']").val(json[i].threshold_original);
+                }
+                //区域
+                var areaThresholdForm=$(".areaThreshold").find("form");
+                for(var i=0;i<areaThresholdForm.length;i++){
+                  areaThresholdForm.eq(i).find("input").eq(0).val(json[i].threshold_foreign);
+                  areaThresholdForm.eq(i).find("input").eq(1).val(json[i].threshold_province);
+                  areaThresholdForm.eq(i).find("input").eq(2).val(json[i].threshold_netizen);
+                }
+                //事件情感
+                var eventEmotionTable=$(".eventEmotion").find("table");
+                for(var i=0;i<eventEmotionTable.length;i++){
+                  eventEmotionTable.eq(i).find("input").eq(0).val(json[i].event_nature);
+                  eventEmotionTable.eq(i).find("input").eq(1).val(json[i].event_nature_word);
+                }
+                //网民情感
+                var netizenEmotionTable=$(".netizenEmotion").find("table");
+                for(var i=0;i<netizenEmotionTable.length;i++){
+                  if (!json[i].netizen_emotion) {
+                    netizenEmotionTable.eq(i).find("input").eq(0).attr("placeholder",'暂无信息');
+                  }else{
+                    netizenEmotionTable.eq(i).find("input").eq(0).val(json[i].netizen_emotion);
+                  }
+                  if (!json[i].netizen_emotion_word) {
+                    netizenEmotionTable.eq(i).find("input").eq(1).attr("placeholder",'暂无信息');
+                  }else{
+                    netizenEmotionTable.eq(i).find("input").eq(1).val(json[i].netizen_emotion_word);
+                  }
+                  
+                }
+              }
+            })
+           }
+        </script>
+    </body>
+</html>
+

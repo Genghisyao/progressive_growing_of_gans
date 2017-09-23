@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>微信公众号接入平台 - 注册</title>
+
+        <meta name="description" content="User login page" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- basic styles -->
+
+        <link href="{$webroot}assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{$webroot}assets/css/font-awesome.min.css" />
+
+        <!--[if IE 7]>
+          <link rel="stylesheet" href="{$webroot}assets/css/font-awesome-ie7.min.css" />
+        <![endif]-->
+
+        <!-- page specific plugin styles -->
+        <link rel="stylesheet" href="{$webroot}assets/css/jquery.gritter.css" />
+        <link rel="stylesheet" href="{$webroot}assets/css/select2.css" />
+
+        <!-- fonts -->
+
+        <link rel="stylesheet" href="{$webroot}assets/css/ace-fonts.css" />
+
+        <!-- ace styles -->
+
+        <link rel="stylesheet" href="{$webroot}assets/css/ace.min.css" />
+        <link rel="stylesheet" href="{$webroot}assets/css/ace-rtl.min.css" />
+
+        <!--[if lte IE 8]>
+          <link rel="stylesheet" href="{$webroot}assets/css/ace-ie.min.css" />
+        <![endif]-->
+
+        <!-- inline styles related to this page -->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+        <!--[if lt IE 9]>
+        <script src="{$webroot}assets/js/html5shiv.js"></script>
+        <script src="{$webroot}assets/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body class="login-layout">
+        <div class="main-container">
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="login-container">
+                            <div class="center">
+                                <h1>
+                                    <i class="icon-comments-alt green"></i>
+                                    <span class="red">微信公众号</span>
+                                    <span class="white">接入平台</span>
+                                </h1>
+                                <h4 class="blue">&copy; weixinpub .inc</h4>
+                            </div>
+
+                            <div class="space-6"></div>
+
+                            <div class="position-relative">
+                                <div id="login-box" class="login-box widget-box no-border">
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+                                            <h4 class="header blue lighter bigger">
+                                                <i class="icon-coffee green"></i>
+                                                请输入登录信息
+                                            </h4>
+
+                                            <div class="space-6"></div>
+
+                                            <form>
+                                                <fieldset>
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input id="login_phone_number" type="text" class="form-control" placeholder="手机号码或邮箱地址" />
+                                                            <i class="icon-user"></i>
+                                                        </span>
+                                                    </label>
+
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input id="login_password" type="password" class="form-control" placeholder="密码" />
+                                                            <i class="icon-lock"></i>
+                                                        </span>
+                                                    </label>
+
+                                                    <div class="space"></div>
+
+                                                    <div class="clearfix">
+                                                        <label class="inline">
+                                                            <input type="checkbox" class="ace" />
+                                                            <span class="lbl"> 下次免登录</span>
+                                                        </label>
+
+                                                        <button type="button" class="width-35 pull-right btn btn-sm btn-primary" onClick="clickLogin();">
+                                                            <i class="icon-key"></i>
+                                                            登录
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="space-4"></div>
+                                                </fieldset>
+                                            </form>
+                                        </div><!-- /widget-main -->
+
+                                        <div class="toolbar clearfix">
+                                            <div>
+                                                <a href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
+                                                    <i class="icon-arrow-left"></i>
+                                                    忘记密码
+                                                </a>
+                                            </div>
+
+                                            <div>
+                                                <a href="#" onclick="show_box('signup-box'); return false;" class="user-signup-link">
+                                                    注册新用户
+                                                    <i class="icon-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div><!-- /widget-body -->
+                                </div><!-- /login-box -->
+
+                                <div id="forgot-box" class="forgot-box widget-box no-border">
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+                                            <h4 class="header red lighter bigger">
+                                                <i class="icon-key"></i>
+                                                找回密码
+                                            </h4>
+
+                                            <div class="space-6"></div>
+                                            <p>
+                                                请输入您的注册邮箱以便接收新密码
+                                            </p>
+
+                                            <form>
+                                                <fieldset>
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input type="find_email" class="form-control" placeholder="邮箱地址" />
+                                                            <i class="icon-envelope"></i>
+                                                        </span>
+                                                    </label>
+
+                                                    <div class="clearfix">
+                                                        <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                                                            <i class="icon-lightbulb"></i>
+                                                            发送!
+                                                        </button>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                        </div><!-- /widget-main -->
+
+                                        <div class="toolbar center">
+                                            <a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
+                                                返回登录窗口
+                                                <i class="icon-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div><!-- /widget-body -->
+                                </div><!-- /forgot-box -->
+
+                                <div id="signup-box" class="signup-box visible widget-box no-border">
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+                                            <h4 class="header green lighter bigger">
+                                                <i class="icon-group blue"></i>
+                                                新用户注册
+                                            </h4>
+
+                                            <div class="space-6"></div>
+                                            <p> 请输入注册信息: </p>
+
+                                            <form>
+                                                <fieldset>
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input id="reg_phone" type="email" class="form-control" placeholder="手机号码 (作为登录名)" />
+                                                            <i class="icon-user"></i>
+                                                        </span>
+                                                    </label>
+
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input id="reg_boxid" type="text" class="form-control" placeholder="盒子sim号" />
+                                                            <i class="icon-inbox"></i>
+                                                        </span>
+                                                    </label>
+
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input id="reg_password" type="password" class="form-control" placeholder="密码" />
+                                                            <i class="icon-lock"></i>
+                                                        </span>
+                                                    </label>
+
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input id="reg_reType_password" type="password" class="form-control" placeholder="重复输入密码" />
+                                                            <i class="icon-lock"></i>
+                                                        </span>
+                                                    </label>
+
+                                                    <label class="block">
+                                                        <input type="checkbox" class="ace" id="reg-accept" />
+                                                        <span class="lbl">
+                                                            我接受
+                                                            <a href="#">用户条款</a>
+                                                        </span>
+                                                    </label>
+
+                                                    <div class="space-24"></div>
+
+                                                    <div class="clearfix">
+                                                        <button type="button" class="width-30 pull-left btn btn-sm"  onclick="resetInputs('reg_'); return false;">
+                                                            <i class="icon-refresh"></i>
+                                                            重设
+                                                        </button>
+
+                                                        <button type="button" class="width-65 pull-right btn btn-sm btn-success" onclick="clickReg();">
+                                                            注册!
+                                                            <i class="icon-arrow-right icon-on-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+
+                                        <div class="toolbar center">
+                                            <a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
+                                                <i class="icon-arrow-left"></i>
+                                                返回登录窗口
+                                            </a>
+                                        </div>
+                                    </div><!-- /widget-body -->
+                                </div><!-- /signup-box -->
+                            </div><!-- /position-relative -->
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div>
+        </div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='{$webroot}assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+</script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='{$webroot}assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+    if("ontouchend" in document) document.write("<script src='{$webroot}assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+
+<!-- page specific plugin scripts -->
+<script src="{$webroot}assets/js/jquery.gritter.min.js"></script>
+<script src="{$webroot}assets/js/select2.min.js"></script>
+<script src="{$webroot}assets/js/md5.js"></script>
+
+<!-- inline scripts related to this page -->
+
+<script type="text/javascript">
+    var toUN = {
+        on: function(str) {
+            var a = [],
+            i = 0;
+            for (; i < str.length;) a[i] = ("00" + str.charCodeAt(i++).toString(16)).slice( - 4);
+            return "\\u" + a.join("\\u")
+        },
+        un: function(str) {
+            return unescape(str.replace(/\\/g, "%"))
+        }
+    };
+        
+    jQuery.setCookie = function (sName, sValue, oExpires, sPath, sDomain, bSecure) {  
+      var sCookie = sName + '=' + encodeURIComponent(sValue);  
+      if (oExpires) {  
+          sCookie += '; expires=' + oExpires.toGMTString();  
+      };  
+      if (sPath) {  
+          sCookie += '; path=' + sPath;  
+      };  
+      if (sDomain) {  
+          sCookie += '; domain=' + sDomain;  
+      };  
+      if (bSecure) {  
+          sCookie += '; secure';  
+      };  
+      document.cookie = sCookie;  
+    };  
+          
+    jQuery.getCookie = function (sName) {  
+        var sRE = '(?:; )?' + sName + '=([^;]*)';  
+        var oRE = new RegExp(sRE);  
+        if (oRE.test(document.cookie)) {  
+            return decodeURIComponent(RegExp['$1']);  
+        } else {  
+            return null;  
+        };  
+    }
+      
+    jQuery.deleteCookie = function (sName, sPath, sDomain) {  
+        this.setCookie(sName, '', new Date(0), sPath, sDomain);  
+    }
+        
+    jQuery(document).ready(function(){
+        impletePlaceholder();
+        //$("select").select2();
+  
+    });
+            
+    var placeholder=function(input){
+        var text=input.getAttribute('placeholder'), defaultValue=input.defaultValue;
+        if(defaultValue==''){input.value=text;}
+        input.onfocus=function(){
+          if(input.value===text){this.value='';}
+          if(input.id.indexOf('password') > -1){
+            input.type = 'password';
+          }
+        };
+        input.onblur=function(){
+          if(input.value===''){
+            input.type = 'text';
+            this.value=text;
+          }
+        };
+    };
+      
+    function impletePlaceholder(){
+        var doc=document,inputs=doc.getElementsByTagName('input'),supportPlaceholder='placeholder' in doc.createElement('input');
+        
+        for(var i=0,len=inputs.length;i<len;i++){
+          var input=inputs[i];
+          input.onkeydown=function(){
+            if (event.keyCode == 13){
+              event.returnValue=false;
+              event.cancel = true;
+              alert(this.id.indexOf('login_') == 0);
+              return;
+            }
+        
+            if(event.keyCode == 8 && this.value.length < 2 && !supportPlaceholder){
+              this.type = 'text';
+              this.value=this.getAttribute('placeholder');
+              this.blur();
+              event.returnValue=false;
+              event.cancel = true;
+              return;
+            }
+          };
+        }
+        
+        if(!supportPlaceholder){
+            for(var i=0,len=inputs.length;i<len;i++){
+                var input=inputs[i],text=input.getAttribute('placeholder');
+                if(input.type==='text'&&text){placeholder(input);}
+                if(input.type==='password'&&text&&(input.value==text||input.value=='')){
+                    input.type = 'text';
+                    placeholder(input);
+                }
+            }
+        }
+    }
+      
+    function resetInputs(_prefix) {
+        var doc=document,inputs=doc.getElementsByTagName('input'),supportPlaceholder='placeholder' in doc.createElement('input');
+          
+        for(var i=0,len=inputs.length;i<len;i++){
+            var input=inputs[i];
+            if(input.id.indexOf(_prefix) == 0){
+                input.value = '';
+                if(!supportPlaceholder){
+                    input.type = 'text';
+                    input.value=input.getAttribute('placeholder');
+                }
+            }
+        }
+    }
+      
+    function clickLogin(){
+        if($("#login_phone_number").val() == "" || $("#login_password").val() == "") {
+            showUiResult("请输入完整信息","登录号与密码不能为空");
+            return;
+        }
+        var url = '{$webroot}login/api_login';
+        var postData = Object();
+        postData.login_name = $("#login_phone_number").val();
+        postData.password = faultylabs.MD5($("#login_password").val());
+        
+        $.post(url, postData,
+        function(data){
+            var jsonObj = eval("("+data+")");
+            if(jsonObj.state == 200){
+                $.deleteCookie("authKey");
+                $.setCookie("authKey",jsonObj.authKey);
+                $('<form class="hide" />')
+                .appendTo('body').attr({'method': 'POST', 'action': jsonObj.goPage}).submit();
+            }else showUiResult(jsonObj.title,jsonObj.comment);
+        },"text");
+    }
+      
+    function clickReg(){
+        if($("#reg_phone").val() == "" || $("#reg_boxid").val() == "" || $("#reg_password").val() == "" || $("#reg_reType_password").val() == "") {
+            showUiResult("请输入完整信息","输入框不能为空");
+            return;
+        }
+        
+        if(!isPhoneNumber($("#reg_phone").val()) || !isPhoneNumber($("#reg_boxid").val())){
+            showUiResult("请输入正确信息","登录名和盒子sim号须为手机号码类型");
+            return;
+        }
+        
+        if($("#reg_password").val().length < 6){
+            showUiResult("请输入正确信息","密码长度须大于6位数");
+            return;
+        }
+        
+        if($("#reg_password").val() != $("#reg_reType_password").val()){
+            showUiResult("请输入正确信息","重复输入密码不正确");
+            return;
+        }
+        
+        if($("#reg-accept").prop("checked") == false){
+            showUiResult("提示信息","未接受用户条款");
+            return;
+        }
+        
+        var postData = Object();
+        postData.phone = $("#reg_phone").val();
+        postData.box = $("#reg_boxid").val();
+        postData.password = faultylabs.MD5($("#reg_password").val());
+        
+        var url = '{$webroot}reg/api_reg';
+        
+        $.post(url, postData,
+        function(data){
+          var jsonObj = eval("("+data+")");
+          if(jsonObj.state == 200){
+                $.deleteCookie("authKey");
+                showUiResult(jsonObj.title,jsonObj.comment);
+                $("#login_phone_number").val($("#reg_phone").val());
+                $("#login_password").val($("#reg_password").val());
+                show_box('login-box');
+            }else showUiResult(jsonObj.title,jsonObj.comment);
+        },"text");
+    }
+      
+    function isPhoneNumber(telNum){
+        if(/^13\d{9}$/g.test(telNum)||(/^15\d{9}$/g.test(telNum))||(/^18\d{9}$/g.test(telNum))) return true;
+        else return false;
+    }
+      
+    function isFloat(values){
+        var intR = /^\d+$/;
+        var floatR = /^\d+(\.\d+)?$/;
+        if(intR.test(values) == true || floatR.test(values) == true) return true;
+        else return false;
+    }
+          
+    function show_box(id) {
+        jQuery('.widget-box.visible').removeClass('visible');
+        jQuery('#'+id).addClass('visible');
+    }
+      
+    function showUiResult(title, content){
+        $.gritter.add({title: title, text: content, class_name: 'gritter-success gritter-light' });
+    }
+    </script>
+    </body>
+</html>

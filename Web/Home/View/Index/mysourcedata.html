@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]>
+<html class="ie9">
+<![endif]-->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="UTF-8">
+
+        <meta name="description" content="Violate Responsive Admin Template">
+        <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+        <title>文件管理</title>
+            
+        <!-- CSS -->
+        
+        <link href="{$webroot}assets/css/animate.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/form.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/file-manager.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/style.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/icons.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/generics.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/jquery.dataTables.css" rel="stylesheet">
+        <style type="text/css">
+            #content {margin-left: 0}
+            .elfinder-button-icon-totrainset, .elfinder-button-icon-tobussnset {
+                width: 100%;
+                border: rgba(255, 255, 255, 0.8);
+                border-style: solid;
+                border-width: 1px;
+                padding: 3px 5px 3px 5px;
+                color: rgba(255, 255, 255, 0.8);
+                background-color: rgba(255, 0, 0, 0.2);
+            }
+            .ui-state-disabled .elfinder-button-icon-totrainset, .ui-state-disabled .elfinder-button-icon-tobussnset {
+                border: white;
+                border-style: solid;
+                border-width: 1px;
+                color: white;
+                background-color: rgba(255, 0, 0, 0);
+            }
+
+            #skin-blur-white{
+                color: #666666;
+            }
+            #skin-blur-white .elfinder-toolbar{
+                border-bottom: 1px solid #ddd;
+               /* border-top: 1px solid #ddd;*/
+            }
+            #skin-blur-white .elfinder-navbar{
+                border-right: 1px solid #ddd;
+            }
+            #skin-blur-white .file-search{
+                border: 1px solid #ddd;
+                color: #666666;
+            }
+            #skin-blur-white .elfinder-cwd-filename{
+                color: #666666;
+            }
+            /*           舆情
+*/           #skin-blur-white #main,#skin-blur-white #content{
+            width: 100%;
+            height: 100%;
+           }
+           #skin-blur-white #content{
+            padding: 10px;
+           }
+           #skin-blur-white #content>div{
+            height: 100%;
+            padding: 0px 5px;
+           }
+           #skin-blur-white #eventList,#skin-blur-white #eventMessage{
+            border:1px solid #ddd;
+            background-color: #fff;
+            height: 100%;
+            width: 100%;
+            border-radius: 5px !important;
+           }
+           #skin-blur-white .title{
+            border-bottom: 1px solid #ddd;
+            padding-left: 20px;
+           }
+           #skin-blur-white .title p{
+            margin: 0px;
+            display: inline-block;
+            padding: 10px 20px 5px 0px;
+            border-bottom: 1px solid #435f76;
+            color: #435f76;
+            font-size: 18px;
+            transform: scaleX(0.9);
+           }
+           #skin-blur-white #eventList .body>div{
+            padding-bottom: 10px;
+            color: #666;
+            border-bottom: 1px solid #ddd;
+           }
+           #skin-blur-white #eventList .body{
+            padding: 0px 20px;
+           }
+           #skin-blur-white .body label{
+            color: #666;
+            font-weight: 600;
+            font-size: 13px;
+           }
+           #skin-blur-white .form-control{
+            border:1px solid #ddd;
+            background-color: #fff;
+            background: #fff;
+            color: #666;
+            box-shadow: none;
+            border-radius: 5px!important;
+           }
+           #skin-blur-white .form-control:focus{
+            border:1px solid rgba(67, 95, 118,0.6);
+            box-shadow: 0px 0px 5px #435f76;
+           }
+           #skin-blur-white form{
+            padding: 10px 20px;
+           }
+           #skin-blur-white #submit{
+            background-color: #fff;
+            background: #fff;
+            border:1px solid rgba(67, 95, 118,0.6);
+            color: rgb(67, 95, 118);
+            border-radius: 5px!important;
+           }
+           #skin-blur-white #submit:hover{
+            box-shadow: 0px 0px 5px rgba(67, 95, 118,0.6);
+           }
+           #skin-blur-white #submit:active{
+            background-color:rgba(67, 95, 118,0.6);
+            color: #fff;
+           }
+           #skin-blur-white div.form-group{
+            margin-bottom: 20px;
+           }
+           #skin-blur-white #eventTitle,#skin-blur-white #eventBody{
+            width: 100%;
+            
+           }
+           #skin-blur-white #eventBody td,#skin-blur-white #eventTitle th{
+            padding:5px 10px;
+            /*text-align: center;*/
+           }
+          
+           #skin-blur-white #eventTitle tr,#skin-blur-white #eventBody tr{
+            width: 100%;
+            padding: 5px 0px;
+            
+           }
+           #skin-blur-white #eventBody tr{
+            border-top: 1px solid #ddd;
+           }
+           #eventBody tr:nth-child(odd){
+            background-color: #eaeaea;
+           }
+           #skin-blur-white #eventBody a{
+            color: #666;
+            display: block;
+           }
+           a:focus,a:hover{
+            color: #435f76;
+            text-decoration: underline;
+           }
+           .num{
+            min-width: 100px;
+            text-align: center;
+           }
+           /*#eventTitle th:nth-child(1),#eventBody tr td:nth-child(1){
+            padding-left: 0px!important;
+           }*/
+          a{
+            color:#666;
+           }
+           th{
+            background-color: rgb(255,255,255)!important;
+            box-shadow: 0px 0px 0px rgb(255,225,225)!important;
+           }
+           /*#UserList thead th{
+            border-bottom: 1px solid #ddd!important;
+           }*/
+           table.dataTable.no-footer{
+            border-bottom: 1px solid #ddd!important;
+           }
+            .dataTables_wrapper.no-footer .dataTables_scrollBody{
+              border-bottom-style: none;
+            }
+           /*tbody tr{
+            height: 25px!important;
+           }
+           tbody td{
+            padding-top: 4px!important;
+            padding-bottom: 4px!important;
+           }*/
+           .body>div{
+            height: 100%;
+           }
+           #UserList{
+            border-style: none!important;
+           }
+           #UserList td{
+            border-bottom: 1px solid #ddd!important;
+           }
+           .dataTables_scrollBody{
+            border-bottom: 1px solid #ddd!important;
+           }
+           .printBtn{
+            width: auto;
+            padding-top: 10px;
+            height: 100%;
+           }
+           .printBtn a{
+            padding: 5px 10px;
+           }
+           .printBtn a:hover{
+            text-decoration: underline;
+           }
+           .printBtn a:focus{
+            box-shadow: 0px 0px 5px #23527c;
+            text-decoration: underline;
+           }
+           .title {
+            margin: 0px;
+            width: 100%;
+           }
+        </style>
+    </head>
+    
+    <body style="background-color: rgba(255, 255, 255, 0);" id="skin-blur-white">
+        <section id="main" class="p-relative" role="main">
+            <!-- Content -->
+            <section id="content" class="container">
+                <div class="col-md-12">
+                  <div id="eventList">
+                    <div class="title container">
+                      <div class="col-md-6"><p>事件列表</p></div>
+                      <div class="col-md-6 text-right" id="print">
+                        <div class="printBtn"><a href="#" onclick="printing();"><span class="glyphicon glyphicon-print">下载报告</span></a></div>
+                      </div>
+                    </div>
+                    <div class="body">
+                      <table class="table table-striped table-hover" id="UserList" width="100%">
+                          <thead>
+                              <tr>
+                                  <th style="display: none;">事件ID</th>
+                                  <th>事件名称</th>
+                                  <th class="text-center">创建时间</th>
+                                  <th class="text-center">原创数</th>
+                                  <th class="text-center">转发数</th>
+                                  <th class="text-center">评论数</th>
+                                  <th class="text-center">阅读数</th>
+                                  <th class="text-center">点赞数</th>                          
+                                  <th class="text-center">收藏数</th>                          
+                                  <th class="text-center">最高热度</th>
+                              </tr>
+                          </thead>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+               
+            </section>
+        </section>
+        
+        <!-- Javascript Libraries -->
+        <!-- jQuery -->
+        <script src="{$webroot}assets/js/jquery.min.js"></script> <!-- jQuery Library -->
+        <script src="{$webroot}assets/js/jquery-ui.min.js"></script> <!-- jQuery UI -->
+        
+        <!-- Bootstrap -->
+        <script src="{$webroot}assets/js/bootstrap.min.js"></script>
+          
+        
+        <!-- UX -->
+        <script src="{$webroot}assets/js/scroll.min.js"></script> <!-- Custom Scrollbar -->
+        
+        <!-- Other -->
+        <script src="{$webroot}assets/js/file-manager/elfinder.js"></script> <!-- File Manager -->
+        <script src="{$webroot}assets/js/file-manager/i18n/elfinder.zh_CN.js"></script> <!-- File Manager -->
+        <script src="{$webroot}assets/js/jquery.dataTables.min.js"></script>   <!-- datatables -->
+        
+        <!-- All JS functions -->
+
+        <script type="text/javascript">
+           $(document).ready(function() {
+               /*setEventList();*/
+               /*$("#UserList").dataTable({
+                  data:function(){
+                     $.ajax({
+                        url: "/event/api_get_eventlist",
+                        type:"post",
+                        dataType: "json",
+                        success: function(result){
+                          return result;
+                        } 
+                      })
+                  }(),
+                  columns: [
+                      { data: 'event_name'},
+                      { data: 'add_datetime'},
+                      { data: 'original_total'},
+                      { data: 'forward_total'},
+                      { data: 'reply_total'},
+                      { data: 'read_total'},
+                      { data: 'like_total'},
+                      { data: 'collect_total'},
+                      { data: 'event_heat'}
+                  ]
+               })*/
+               $(".body").height($("#eventList").height()-$(".title").height());
+               $.ajax({
+                  url: "/event/api_get_eventlist",
+                  type:"post",
+                  dataType: "json",
+                  success: function(result){
+                    /*console.log(JSON.stringify(result));*/
+                    var str=JSON.stringify(result).replace(/null/g,'"-"');
+                   
+                    var res=JSON.parse(str);
+                    
+                    $("#UserList").dataTable({
+                      "bLengthChange": false, //改变每页显示数据数量
+                      "bFilter": false, //过滤功能
+                      /*"bSort": true,*/
+                      "bProcessing": true,
+                      "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0 ,1] }] ,
+                      "order":[[2, 'desc']],
+                      
+                      "iDisplayLength": 100,
+                      "bInfo": false,
+                      "sScrollY":function(){
+                        var bodyHeight=$(".body").height();
+                        return bodyHeight-100;
+                      }(),
+                      "createdRow": function( row, data, dataIndex ) {
+                            $(row).children('td').eq(2).attr('style', 'text-align: center;');
+                            $(row).children('td').eq(3).attr('style', 'text-align: center;');
+                            $(row).children('td').eq(4).attr('style', 'text-align: center;');
+                            $(row).children('td').eq(5).attr('style', 'text-align: center;');
+                            $(row).children('td').eq(6).attr('style', 'text-align: center;');
+                            $(row).children('td').eq(7).attr('style', 'text-align: center;');
+                            $(row).children('td').eq(8).attr('style', 'text-align: center;');
+                            $(row).children('td').eq(9).attr('style', 'text-align: center;');
+                        },
+                      data:res,
+                      columns:[ 
+                          {'data':'event_id','createdCell':function(td){
+                            $(td).css('display','none').addClass('IDtd');
+                          }},
+                          { 'data': 'event_name',"createdCell": function (td, cellData, rowData, row, col) {
+                                                                    var text=$(td).html();
+                                                                    var id=$(td).siblings('.IDtd').html();
+                                                                    $(td).attr({'id':id,'onclick':'parent.setModel(this);parent.showModel();'});
+                                                                    $(td).empty(); 
+                                                                    $(td).append("<a href='#'>"+text+"</a>");
+                                                                },
+                          },
+                          { 'data': 'add_datetime'},
+                          { 'data': 'original_total'},
+                          { 'data': 'forward_total'},
+                          { 'data': 'reply_total'},
+                          { 'data': 'read_total'},
+                          { 'data': 'like_total'},
+                          { 'data': 'collect_total'},
+                          { 'data': 'event_heat'}
+                      ]
+                    })
+                    /*for(var i=0;i<100&&i<$("#UserList tbody tr").length;i++){
+                      $("#UserList tbody tr").eq(i).find("td").eq(0).attr({'id':result[i].event_id,'onclick':'parent.setModel(this);parent.showModel();'});
+                      var text=$("#UserList tbody tr").eq(i).find("td").eq(0).html();
+                      $("#UserList tbody tr").eq(i).find("td").eq(0).empty();
+                      $("#UserList tbody tr").eq(i).find("td").eq(0).append("<a href='#'>"+text+"</a>");
+                      
+                    }*/
+                  } 
+              })   
+
+               //改变页数增加对应的类名和超链接
+
+            });
+           $(window).resize(function(){
+            $(".body").height($("#eventList").height()-$(".title").height());
+            $(".dataTables_scrollBody").height($("#UserList_wrapper").height()-$(".dataTables_scrollHead").height()-$("#UserList_paginate").height());
+           })
+          /* $(window).resize(function(){
+              var length=$("#eventBody tr").eq(0).find("td").length;
+              for(var i=0;i<length;i++){
+                $("#eventTitle tr").find("th").eq(i).width($("#eventBody tr").eq(0).find("td").eq(i).width());
+              }
+           })*/
+            //进入页面时加载事件列表
+            function setEventList(){
+                $.ajax({
+                    url: "/event/api_get_eventlist",
+                    type:"post",
+                    dataType: "json",
+                    success: function(result){ 
+                      console.log(result);
+                      var str="";
+                      for(var i=0;i<result.length;i++){
+                        str+="<tr><td><a href='#' onclick='parent.setModel(this);parent.showModel();' id='"+result[i].event_id+"'>"+result[i].event_name+"</a></td><td>"+result[i].add_datetime+"</td><td class='num'>";/*+result[i].original_total+"</td><td class='num'>"+result[i].forward_total+"</td><td class='num'>"+result[i].reply_total+"</td><td class='num'>"+result[i].read_total+"</td><td class='num'>"+result[i].like_total+"</td><td class='num'>"+result[i].collect_total+"</td><td class='num'>"+result[i].event_heat+"</td></tr>";*/
+                        if (result[i].original_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].original_total+"</td><td class='num'>";
+                        }
+                        if (result[i].forward_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].forward_total+"</td><td class='num'>";
+                        }
+                        if (result[i].reply_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].reply_total+"</td><td class='num'>";
+                        }
+                        if (result[i].read_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].read_total+"</td><td class='num'>";
+                        }
+                        if (result[i].like_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].like_total+"</td><td class='num'>";
+                        }
+                        if (result[i].collect_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].collect_total+"</td><td class='num'>";
+                        }
+                        if (result[i].event_heat==null) {
+                          str+="-</td></tr>";
+                        }else{
+                          str+=result[i].event_heat+"</td></tr>";
+                        }
+                      }
+                      $("#eventBody").append(str);
+                      var length=$("#eventBody tr").eq(0).find("td").length;
+                      for(var i=0;i<length;i++){
+                        $("#eventTitle tr").find("th").eq(i).width($("#eventBody tr").eq(0).find("td").eq(i).width());
+                      }
+
+                    }                           
+                  });
+                 /* var length=$("#eventBody tr").eq(0).find("td").length;
+                      for(var i=0;i<length;i++){
+                        $("#eventTitle tr").find("th").eq(i).width($("#eventBody tr").eq(0).find("td").eq(i).width());
+                      }*/
+            }
+
+           
+            //打印报告
+            function printing(){
+              
+              var url='/report/api_download_viewreport';
+              
+              var form = $("<form></form>");
+              form.attr('action',url);
+              form.attr('method','post');
+              form.css("display","none");
+              
+              $("body").append(form);
+              form.submit();
+             
+            }
+        </script>
+    </body>
+</html>
+

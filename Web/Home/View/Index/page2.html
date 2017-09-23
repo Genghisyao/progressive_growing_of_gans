@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]>
+<html class="ie9">
+<![endif]-->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="UTF-8">
+
+        <meta name="description" content="Violate Responsive Admin Template">
+        <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+        <title>文件管理</title>
+            
+        <!-- CSS -->
+        
+        <link href="{$webroot}assets/css/animate.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/form.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/file-manager.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/style.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/icons.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/generics.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/jquery.dataTables.css" rel="stylesheet">
+        <style type="text/css">
+            #main,#content{width: 100%;height: 100%;margin: 0px;}
+            #content{padding: 10px;}
+            #content>div{width: 100%;height: 100%;border:1px solid #ddd;border-radius: 5px!important;background-color: #fff;}
+            .title{border-bottom: 1px solid #ddd;padding-left: 10px;}
+            .title p{display: inline-block;padding: 10px 20px 5px 0px;color: #435f76;border-bottom: 1px solid #435f76;margin: 0px;font-size: 18px;}
+            table{width: 100%;}
+            th,td{color: #666;}
+            ::-webkit-scrollbar{width:5px;}
+            ::-webkit-scrollbar-track{background-color:#f9f9f9;}
+            ::-webkit-scrollbar-thumb{background-color:#bee1eb;}
+            .table th{background-color: #f9f9f9;}
+            table.dataTable.no-footer,.dataTables_wrapper.no-footer .dataTables_scrollBody{border-bottom: 1px solid #f9f9f9;}
+            .body{padding: 10px;}
+        </style>
+    </head>
+    
+    <body style="background-color: rgba(255, 255, 255, 0);" id="skin-blur-white">
+        <section id="main" class="p-relative" role="main">
+            <!-- Content -->
+            <section id="content" class="container">
+               <div class="container content">
+                 <div class="title"><p>热词文章列表</p></div>
+                 <div class="body">
+                   <table id="keyTable" class="table table-striped table-hover">
+                     <thead>
+                       <tr>
+                         <th>发布时间</th>
+                         <th>标题</th>
+                         <th>出处</th>
+                       </tr>
+                     </thead>
+                   </table>
+                 </div>
+               </div>
+            </section>
+        </section>
+        
+        <!-- Javascript Libraries -->
+        <!-- jQuery -->
+        <script src="{$webroot}assets/js/jquery.min.js"></script> <!-- jQuery Library -->
+        <script src="{$webroot}assets/js/jquery-ui.min.js"></script> <!-- jQuery UI -->
+        
+        <!-- Bootstrap -->
+        <script src="{$webroot}assets/js/bootstrap.min.js"></script>
+          
+        
+        <!-- UX -->
+        <script src="{$webroot}assets/js/scroll.min.js"></script> <!-- Custom Scrollbar -->
+        
+        <!-- Other -->
+        <script src="{$webroot}assets/js/file-manager/elfinder.js"></script> <!-- File Manager -->
+        <script src="{$webroot}assets/js/file-manager/i18n/elfinder.zh_CN.js"></script> <!-- File Manager -->
+        <script src="{$webroot}assets/js/jquery.dataTables.min.js"></script>   <!-- datatables -->
+        
+        <!-- All JS functions -->
+
+        <script type="text/javascript">
+          window.onload=function(){
+            $(".body").each(function(){
+              $(this).height($(this).parent().height()-$(this).siblings(".title").height()-20);
+            })
+            // alert("{$keyName}");
+            var postData={};
+            postData.word="{$keyName}";
+            console.log(postData);
+            $.ajax({
+              url:'/search/api_search_cloud',
+              dataType:'json',
+              data:postData,
+              type:'post',
+              success:function(result){
+                /*console.log(result);*/
+                $("#keyTable").dataTable({
+                    "bLengthChange": false, //改变每页显示数据数量
+                    "bFilter": false, //过滤功能
+                    /*"bSort": true,*/
+                    "bProcessing": true,
+                    "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 1,2] }] ,
+                    "order":[[0, 'desc']],
+                    
+                    "iDisplayLength": 100,
+                    "bInfo": false,
+                    "sScrollY":function(){
+                      var bodyHeight=$(".body").height();
+                      return bodyHeight-100;
+                    }(),
+                    /*"createdRow": function( row, data, dataIndex ) {
+                          $(row).children('td').eq(2).attr('style', 'text-align: center;');
+                          $(row).children('td').eq(3).attr('style', 'text-align: center;');
+                          $(row).children('td').eq(4).attr('style', 'text-align: center;');
+                          $(row).children('td').eq(5).attr('style', 'text-align: center;');
+                          $(row).children('td').eq(6).attr('style', 'text-align: center;');
+                          $(row).children('td').eq(7).attr('style', 'text-align: center;');
+                          $(row).children('td').eq(8).attr('style', 'text-align: center;');
+                          $(row).children('td').eq(9).attr('style', 'text-align: center;');
+                      },*/
+                    data:result,
+                    columns:[
+                        { 'data': 'publish_datetime'},
+                        { 'data': 'title'},
+                        { 'data': 'media'}/*,
+                        { 'data': 'content'}*/
+                    ]
+                  })
+
+              }
+            })
+            
+          }
+        </script>
+    </body>
+</html>
+

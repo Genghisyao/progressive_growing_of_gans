@@ -1,0 +1,34 @@
+[INFO] [weibo] [7340] [MainThread] [login] [109] [2017-07-17 11:40:34,808]: Success to login
+[INFO] [weibo] [7340] [MainThread] [<module>] [692] [2017-07-17 11:43:03,250]: Begin to crawl comment. Totally 593 to crawl
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:43:17,203]: Finish crawl 20 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:43:29,516]: Finish crawl 40 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:43:44,055]: Finish crawl 60 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:43:56,529]: Finish crawl 80 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:44:09,339]: Finish crawl 100 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:44:24,085]: Finish crawl 120 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:44:36,361]: Finish crawl 140 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:44:49,888]: Finish crawl 160 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:45:01,710]: Finish crawl 180 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:45:18,009]: Finish crawl 200 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:45:33,566]: Finish crawl 220 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:45:48,809]: Finish crawl 240 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:46:05,053]: Finish crawl 260 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:46:17,905]: Finish crawl 280 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:46:30,085]: Finish crawl 300 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:46:43,711]: Finish crawl 320 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:46:57,621]: Finish crawl 340 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:47:10,371]: Finish crawl 360 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:47:27,785]: Finish crawl 380 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:47:40,778]: Finish crawl 400 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:47:52,500]: Finish crawl 420 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:48:05,206]: Finish crawl 440 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:48:16,506]: Finish crawl 460 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:48:31,602]: Finish crawl 480 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:48:43,434]: Finish crawl 500 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:48:56,312]: Finish crawl 520 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:49:11,769]: Finish crawl 540 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:49:25,117]: Finish crawl 560 comment
+[DEBUG] [weibo] [7340] [MainThread] [<module>] [698] [2017-07-17 11:49:40,809]: Finish crawl 580 comment
+[INFO] [weibo] [7340] [MainThread] [writeDb] [202] [2017-07-17 11:49:52,124]: Insert 593 records to blog
+[INFO] [weibo] [7340] [MainThread] [writeDb] [209] [2017-07-17 11:49:52,499]: Insert 1421 records to comment
+[INFO] [weibo] [7340] [MainThread] [<module>] [706] [2017-07-17 11:49:52,826]: Finish crawling 中山大学 within 9.28 minute for page 1 to 30

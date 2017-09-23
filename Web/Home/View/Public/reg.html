@@ -1,0 +1,108 @@
+﻿<layout name="framework_wx" /><!--rend--><script src="{$webroot}assets/js/md5.js"></script>
+<section id="reg-section" data-aside="menu" data-transition="slide">
+    <header data-title="绑定量化交易系统">
+        <!--nav>
+            <button data-view-section="back" data-icon="chevron-left"></button>
+        </nav>
+        <nav class="on-right">
+            <button data-view-aside="boards" data-icon="camera-retro"></button>
+        </nav-->
+    </header>
+    <article id="reg-article" class="active indented scroll list">
+        <div class="form">
+            <input type="text" class="border" id="wname" value="绑定到微信号: {$wname}" disabled>
+            <input type="text" placeholder="量化交易系统用户名" class="border" id="username-input">
+            <input type="text" placeholder="Email" class="border" id="email-input">
+            <input type="password" placeholder="密码" class="border" id="password-input">
+            <input type="password" placeholder="重复输入密码" class="border" id="password-re-input">
+            <br /><br />
+            <button class="anchor accept margin-bottom" id="reg-button" onClick="bind();">绑定</button>
+            <input type="hidden" id="openid" value="{$openId}">
+        </div>
+    </article>
+    <!--link rel="stylesheet" href="/assets/lungo.2.2.0/lungo.theme.css">
+    <footer id="footer">
+        <nav>
+            <a href="#" data-icon="menu" class="active"></a>
+            <a href="#" data-icon="share"></a>
+            <a href="#" data-icon="user"></a>
+            <a href="#" data-icon="share"></a>
+        </nav>
+    </footer-->
+    
+    <script>
+        function ready(){
+            var user = getCookie("user");
+            var pass = getCookie("pass");
+            $$("#username-input").val(user);
+            $$("#password-input").val(pass);
+        }
+        function bind(){
+            var user = $$("#username-input").val();
+            var email = $$("#email-input").val();
+            var pass = $$("#password-input").val();
+            var repass = $$("#password-re-input").val();
+            var openid = $$("#openid").val();
+            
+            if(user == ""){
+                drawToast("用户名不能为空",0);
+                return;
+            }
+            
+            if(email == ""){
+                drawToast("邮箱不能为空",0);
+                return;
+            }
+            
+            if(pass == ""){
+                drawToast("密码不能为空",0);
+                return;
+            }
+            
+            if(repass == ""){
+                drawToast("请重复输入密码",0);
+                return;
+            }
+            
+            if(pass != repass){
+                drawToast("两次输入密码不匹配",0);
+                return;
+            }
+            
+            var md5pass = faultylabs.MD5(pass);
+            
+            var url = "{$webroot}reg/api_reg";
+            var data = {user: user, pass: md5pass, openid: openid, email: email};
+            var parseResponse = function(result){
+                drawToast(result.comment,0);
+                if(result.state == 200){
+                    setCookie("user",user);
+                    setCookie("pass",pass);
+                    setCookie("openid",openid);
+                    openId = openid;
+                    //drawToast(openId);
+                    //setCookie("authKey",result.authKey);
+                    Lungo.Router.back();
+                }else enableAll();
+            };
+            Lungo.Service.post(url, data, parseResponse, "json");
+
+            disableAll();
+            drawToast("提交数据中...");
+        }
+        
+        function disableAll(){
+            $$("#username-input").attr("disabled",true);
+            $$("#password-input").attr("disabled",true);
+            $$("#password-re-input").attr("disabled",true);
+            $$("#reg-button").attr("disabled",true);
+        }
+        
+        function enableAll(){
+            $$("#username-input").removeAttr("disabled");
+            $$("#password-input").removeAttr("disabled");
+            $$("#password-re-input").removeAttr("disabled");
+            $$("#reg-button").removeAttr("disabled");
+        }
+    </script>
+</section>

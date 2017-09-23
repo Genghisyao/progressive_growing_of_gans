@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <?php header('Content-type: application/x-javascript'); ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="UTF-8">
+
+        <meta name="description" content="Violate Responsive Admin Template">
+        <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+        <title> 高校网络舆情分析平台 </title>
+            
+        <!-- CSS -->
+        <link href="{$webroot}assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/animate.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/form.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/calendar.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/style.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/icons.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/generics.css" rel="stylesheet"> 
+        <link href="{$webroot}assets/css/daterangepicker.css" rel="stylesheet">
+        
+        <style type="text/css">
+            .logo {
+                    width: 225px !important;
+                    height: 50px;
+                    text-align: center;
+                    padding: 14px 0 12px 0px;
+                    font-size: 16px;
+                    margin-right: 9px !important;
+                    background: rgba(0, 0, 0, 0.23);
+                    margin-left: 75px !important;
+            }
+            #menu-toggle{
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+                border-bottom-color: rgba(255, 255, 255, 0.2);
+            }
+            .font-icons .icon { font-size: 25px; margin-right: 5px; }
+            .font-icons [class*="col-"] { padding: 5px 10px; }
+            .font-icons [class*="col-"]:hover { background: rgba(0,0,0,0.2); }
+            .icon-large {
+                font-size: 26px;
+                margin-top: 5px;
+            }
+            .fa {
+                margin-top: 12px;
+                margin-bottom: 5px;
+            }
+            li.active {background-color: rgba(255, 0, 0, 0.10);}
+            
+            .list-menu-bt {
+                margin: 3px 3px 3px auto;
+                color: rgba(255, 255, 255, 0.5) !important;
+            }
+            #side-list td { color: rgba(255, 255, 255, 0.5); }
+            #side-list td a { color: rgba(255, 255, 255, 0.5); }
+            #side-list td a:hover { color: rgba(255, 255, 255, 1); }
+            
+            button.list-active {
+                background-color: rgba(255, 255, 255, 0.25) !important;
+            }
+            td.list-active {
+                background-color: rgba(255, 255, 255, 0.25) !important;
+            }
+            
+            #main{
+                min-height: auto;
+            }
+            
+            #data-list tbody td{
+                padding: 0;
+            }
+            #data-list tbody a{
+                display: block;
+                width: 100%;
+                padding: 8px;
+            }
+            #menu-progress-bar {
+                margin: 5px;
+            }
+            
+            #data-list.data-list-filter tbody td {
+                padding: 8px;
+            }
+            
+            .open>.dropdown-menu {
+                background-color: rgba(21, 20, 20, 0.7);
+            }
+            
+            .form-control, .message-search {
+                color: rgba(253, 253, 253, 0.50);
+            }
+            
+.daterangepicker.dropdown-menu.ltr.opensright {
+    background-color: rgba(0, 0, 0, 0.74);
+    border-radius: 10px;
+}
+.daterangepicker .daterangepicker_input i {
+    top: -3px;
+}
+.daterangepicker .input-mini {
+    color: white;
+}
+.daterangepicker .calendar-table {
+    background-color: rgba(0, 0, 0, 0.35);
+    border-style: none;
+}
+td.available {
+    background-color: rgb(2, 71, 2);
+}
+td.weekend.off.available {
+    background-color: #096C09;
+}
+td.available.in-range {
+    background-color: #0D2A66;
+    color: white;
+}
+td.off.available.in-range {
+    background-color: #072054;
+}
+td.off.available {
+    background-color: #096C09;
+}
+td.off.active.start-date.available {
+    background-color: #357ebd;
+    color: #fff;
+}
+td.active.end-date.in-range.available {
+    background-color: #357ebd;
+    color: orange;
+    font-weight: bold;
+}
+.ranges li {
+    background-color: rgba(0, 135, 203, 0.31);
+    border-style: none;
+}
+            
+            #skin-blur-white {
+                background-color:#f4f4f4; 
+                color:#ddd;
+            }
+
+            #skin-blur-white .logo{
+                background-color: #1e2a35;
+            }
+
+            #skin-blur-white .media-body{
+                background-color: #263644; 
+            }
+            #skin-blur-white .side-menu{
+                background-color: #263644; 
+
+            }
+            #skin-blur-white #side-list{
+                /*background-color: #fff;*/
+                background-image: url(../assets/img/bgw/bg-018.gif);
+                /*background-size: 100% 100%;*/
+                color: #000;
+                box-shadow: 0px 6px 0px 0 rgba(0, 0, 0, 0.6);
+                border-right: 1px solid #ddd;
+                height: 100%;
+            }
+            #skin-blur-white .overflow{
+                background-color: #fff;
+            }
+            #skin-blur-white #file-mnt-bt{
+                color: #666666;
+                border:1px solid #ddd !important;
+                
+                background-color: #fff !important;
+            }
+            #skin-blur-white .file-btn{
+                margin: 2px 0px;
+                width: 98%;
+            }
+            #skin-blur-white #file-mnt-bt:hover{
+                box-shadow: 0 0 5px #435f76;
+            }
+            #skin-blur-white #data-list{
+                padding: 26px 0px;
+            }
+            #skin-blur-white .tile th,#skin-blur-white .tile tbody{
+                background-color: #fff; 
+            }
+            #skin-blur-white .tile a{
+                color: #000;
+            }
+            #skin-blur-white .tile thead{
+                color: #435f76;
+                font-size: 12px;
+                font-weight: 600;
+            }
+            #skin-blur-white #side-list td a:hover {
+                color: #666666;
+                background: #f4f4f4 !important;
+            }
+            #skin-blur-white #side-list tbody a{
+                color: #666666;
+            }
+            #skin-blur-white .tile tbody td{
+                border:0;
+            }
+            /*#skin-blur-white #page-title{
+               color: #87a3bc;
+            }*/
+            /*#skin-blur-white .drawer-toggle span{
+                color: #87a3bc;
+            }*/
+            /*#skin-blur-white .table thead{
+                border-top: 1px solid #eaeaea;
+            }*/
+            #skin-blur-white .tile,#skin-blur-white .table th{
+                box-shadow: none;
+            }
+            #skin-blur-white .tile p{
+                margin: 0px;
+                padding:5px 0px;
+                border-bottom: 1px solid #435f76;
+                display:inline-block; 
+                font-size: 14px;
+                padding-bottom: 0px !important;
+            }
+            #skin-blur-white .tile thead th{
+                padding-top: 0px;
+                padding-bottom: 0px;
+                border-bottom: 1px solid #eaeaea !important;
+            }
+            #skin-blur-white #top-menu{
+                border-bottom: 1px solid #263644;
+                box-shadow: 1px 0 6px 0 rgba(0, 0, 0, 0.6) !important;
+            }
+            #skin-blur-white #menu-toggle{
+                height: 50px;
+            }
+            #skin-blur-white #header{
+                border-style: none;
+            }
+            
+            #skin-blur-white .btnDiv{
+                width: 100%;
+                text-align: center !important;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                background-color: #fff;
+                margin-bottom: 15px;
+                border-bottom: 1px solid #ddd;
+            }
+            #skin-blur-white .modelDiv{
+                width: 100%;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                background-color: #fff;
+                margin-bottom: 15px;
+                border-bottom: 1px solid #ddd;
+            }
+            .highLight{
+                background-color:#f4f4f4 !important ;
+                border-right:1px solid #d74b4b !important ;
+                color: #d74b4b !important;
+            }
+            #skin-blur-white .list-active a{
+                background-color:#f4f4f4 !important ;
+                border-right:1px solid #d74b4b !important ;
+                color: #d74b4b !important;
+            }
+            p{
+                margin: 0px;
+            }
+            #skin-blur-white .exportBtn{
+                border-bottom: 1px solid #eaeaea;
+                background-color: #fff;
+                margin-bottom: 15px;
+            }
+            #skin-blur-white .exportBtn .btn-xs{
+                background-color: #fff;
+            }
+            #skin-blur-white #filter-addsource-bt{
+                color: #666 !important;
+                border:1px solid #eaeaea !important; 
+            }
+            #skin-blur-white .list-menu-bt{
+                border:1px solid #eaeaea !important;
+                color: #666 !important;
+            }
+            #skin-blur-white .dropdown-menu{
+                border:1px solid #eaeaea;
+                background-color: #fff;
+                
+            }
+            #skin-blur-white .dropdown-menu a{
+                color: #666;
+            }
+            #skin-blur-white .dropdown-menu .divider{
+                
+                background-color: #eaeaea;
+            }
+           /* #skin-blur-white #empty-table thead th{
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }*/
+            #skin-blur-white #empty-table{
+                margin: 0px;
+            }
+            #skin-blur-white #empty-table tbody td{
+                color: #666;
+            }
+            #skin-blur-white #data-list{
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+            }
+            #skin-blur-white #empty-table thead th .borderP{
+                padding-top: 5px !important;
+                padding-bottom: 0px !important;
+                font-size: 14px;
+                padding-right: 20px;
+            }
+            #skin-blur-white #show-table thead th .borderP{
+                padding-top:5px;
+                padding-bottom:0px;
+                font-size: 14px;
+                padding-right:20px;
+            }
+            #skin-blur-white #show-table tbody td{
+                color: #666;
+            }
+            #skin-blur-white #show-table tbody .noBorderP{
+                font-size: 12px;
+                border-style: none;
+            }
+            #skin-blur-white #show-table tbody td:hover{
+                background-color: #fff !important;
+            }
+            #skin-blur-white #empty-table tbody td:hover{
+                background-color: #fff !important;
+            }
+            #skin-blur-white #show-table tbody td .form-control{
+                border:1px solid #eaeaea;
+                color: #666;
+                background-color: #fff;
+            }
+            #skin-blur-white .tile-config > .tile-menu {
+                width: 34px;
+                height: 26px;
+                display: inline-block;
+                background-color: transparent;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-image: url(../../../assets/img/icon-w-theme/tile-actions.png);
+            }
+            #skin-blur-white .tile-config > .tile-menu:hover{
+                background-color: #eaeaea;
+            }
+            #skin-blur-white #file-mnt-bt:focus{
+               /* background-color: rgba(67, 95, 118,0.5) !important;*/
+                background-color: #f4f4f4 !important;
+                color: #d74b4b !important;
+            }
+            #skin-blur-white .daterangepicker .ranges li{
+                background-color: #eaeaea;
+                color: #666;
+            }
+            #skin-blur-white .daterangepicker .ranges li:hover{
+                background-color: #ddd;
+                color: #666;
+                border-style: none;
+            }
+            #skin-blur-white .daterangepicker .ranges li[class="active"]{
+                box-shadow: 0px 0px 3px rgba(215, 75, 75,1);
+                border-style: none;
+                color:rgb(67, 95, 118);
+            }
+            #skin-blur-white .daterangepicker .form-control{
+                color: #666;
+            }
+            #skin-blur-white .daterangepicker .calendar-table{
+                color: #666;
+            }
+            #skin-blur-white .daterangepicker .calendar-table,#skin-blur-white .daterangepicker .calendar-table table tbody tr td{
+                background-color: #fff;
+                color: #666;
+            }
+            #skin-blur-white .daterangepicker .input-mini.active{
+                border-style: none;
+                box-shadow: 0px 0px 3px rgba(215, 75, 75,1);
+            }
+            #skin-blur-white td.available.in-range{
+                background-color: rgba(215, 75, 75,0.3) !important;
+            }
+            #skin-blur-white .daterangepicker td.active, .daterangepicker td.active:hover{
+                background-color: #eaeaea !important;
+            }
+            #skin-blur-white .daterangepicker .btn{
+                border:1px solid #ddd;
+                color: #666;
+                background-color: #fff;
+                background-image: none;
+            }
+            #skin-blur-white .daterangepicker .btn:hover{
+                border:1px solid rgba(67, 95, 118,0.5) ;
+                color: #435f76;
+                box-shadow: 0px 0px 3px rgb(67, 95, 118);
+
+            }
+        /*舆论分析*/
+        #skin-blur-white #model-init{
+            color:#666;
+        }
+        #skin-blur-white .form-control{
+            border:1px solid #ddd;
+            color: #666;
+            background-color: #fff;
+            background: #fff;
+            height: 28px;
+            margin: 0px !important;
+            /*margin-top: 5px !important;*/
+        }
+        #skin-blur-white .form-control:hover{
+            box-shadow:  0 0 5px #435f76;
+        }
+        #skin-blur-white .form-control:focus{
+            box-shadow:  0 0 5px #435f76;
+        }
+        #skin-blur-white .btn{
+            border:1px solid #ddd !important;
+            color: #666;
+        }
+        #skin-blur-white .block-title{
+            background: rgba(0,0,0,0);
+            color: #777;
+            margin: 0px;
+            /*transform: skewX(-10deg);*/
+        }
+        #skin-blur-white #model-init{
+            padding: 10px;
+            height: 100%;
+        }
+        #skin-blur-white select:not([multiple]) {
+            background-image: url(../../../assets/img/select-bg-w.png);
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
+        
+        #skin-blur-white #showModel:hover{
+            box-shadow: 0 0 5px #435f76;
+           
+        }
+        #skin-blur-white #showModel:focus{
+            background-color: #f4f4f4 !important;
+            color: #d74b4b !important;
+        }
+        #skin-blur-white #model-init .divP{
+            margin: 0px;
+            border-bottom: 1px solid #ddd;
+            height: 25px;
+        }
+        #skin-blur-white #model-init h3{
+            color: #435f76;
+            border-bottom: 1px solid #435f76;
+            height: 100%;
+            padding: 5px 10px 5px 0px;
+        }
+        #skin-blur-white #hotContent p{
+            margin: 0px;
+            font-size: 14px;
+        }
+        #skin-blur-white #hotContent a{
+            color: #435f76;
+        }
+        #skin-blur-white #hotContent .content{
+            margin-bottom: 10px;
+
+        }
+        #skin-blur-white #hotContent .header{
+            border-bottom: 1px solid #ddd;
+        }
+        #skin-blur-white #hotContent .header p{
+            border-bottom: 1px solid #435f76;
+            display: inline-block;
+            color: #435f76;
+            font-size: 16px!important;
+            padding-bottom: 2px;
+            padding-right: 10px;
+            
+        }
+       /* #skin-blur-white #hotContent .body{
+            display: none; 
+        }*/
+        #skin-blur-white .hotBtn{
+            background-color: #fff;
+            border:1px solid #ddd;
+            padding: 5px 10px;
+            color: #666;
+        }
+        #skin-blur-white .hotBtn:hover{
+            box-shadow: 0 0 5px #435f76;
+        }
+        #skin-blur-white .hotBtn:focus{
+            background-color: #eaeaea;
+        }
+        #skin-blur-white .hotBtnDiv{
+            text-align: right;
+            padding-top: 5px;
+        }
+        .choose{
+            background-color: #f4f4f4;
+
+        }
+        .chooseWord{
+            border-bottom: 1px solid #d74b4b !important;
+            color: #d74b4b !important;
+        }
+        #skin-blur-white #hotContent span{
+            color: #666;
+        }
+        input::-webkit-input-placeholder {
+          color: #eaeaea !important;
+        }
+        input:-moz-placeholder {
+          color: #eaeaea !important;
+        }
+        input:-ms-input-placeholder {
+          color: #eaeaea !important;
+        }​
+        /*#skin-blur-white .body{
+            display: none !important;
+        }*/
+        #skin-blur-white .content .body div{
+            padding: 5px 0px;
+            color: #666;
+        }
+        .span{
+
+        }
+        #skin-blur-white .body p{
+            color: #666;
+        }
+        #skin-blur-white .body p:hover{
+            background-color: #eaeaea;
+        }
+        #skin-blur-white .header{
+            margin: 0px 10px;
+        }
+        #skin-blur-white .body p{
+            padding: 2px 20px 2px 20px;
+        }
+       
+        #skin-blur-white .btnDiv{
+            padding: 5px;
+            margin: 0px;
+        }
+        #skin-blur-white .showPStyle{
+            color:#d74b4b !important;
+            border-right: 1px solid #d74b4b;
+            background-color: #eaeaea;
+        }
+        #skin-blur-white .sBody p{
+            padding: 1px 30px 1px 30px !important;
+            font-size: 12px !important;
+        }
+        #skin-blur-white #target{
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+        #menu-setting{
+            margin-top: 0px !important;
+        }
+        #skin-blur-white #sidebar{
+            width: auto;
+        }
+        #skin-blur-white #sidebarDiv{
+            display: none;
+        }
+        #content{
+            margin-left: 75px;
+        }
+        [class*="sa-"]{
+            background-origin: border-box;
+            background-position: bottom;
+        }
+        [class*="sa-side-"]{
+            height: 34px;
+        }
+        #sidebar,#sidebarDiv,#side-list{
+            scroll-behavior: none;
+        }
+        #sidebar,#sidebarDiv,#side-list{
+            overflow-y:hidden;
+        }
+        ::-webkit-scrollbar{width:0px;}
+        </style>
+    </head>
+    <body id="skin-blur-white" ontouchmove="event.preventDefault()">
+        <header id="header" class="media">
+            <a href="" id="menu-toggle"></a> 
+            <a class="logo pull-left" href="index.html"> 高校网络舆情分析平台 </a>
+            
+            <div class="media-body">
+                <div class="media" id="top-menu">
+                    <div class="pull-right tm-icon">
+                        <a class="drawer-toggle" href="">
+                            <i class="icon icon-large" style="float: left;">&#61844;</i>
+                            <span> {$showName}</span>
+                        </a> <a href="/logout" style="padding-top: 15px;"> 登出 </a> 
+                    </div>
+                    
+                    <!-- div class="pull-right tm-icon">
+                        <a data-drawer="messages" class="drawer-toggle" href="">
+                            <i class="sa-top-message"></i>
+                            <i class="n-count animated">5</i>
+                            <span>Messages</span>
+                        </a>
+                    </div>
+                    <div class="pull-right tm-icon">
+                        <a data-drawer="notifications" class="drawer-toggle" href="">
+                            <i class="sa-top-updates"></i>
+                            <i class="n-count animated">9</i>
+                            <span>Updates</span>
+                        </a>
+                    </div -->
+                    
+                    <div class="pull-left">
+                        <h4 class="page-title" id="page-title">  </h4>
+                    </div>
+
+                    <div class="media-body">
+                        
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="clearfix"></div>
+        
+        <section id="main" class="p-relative" role="main">
+            
+            <!-- Sidebar -->
+            <aside id="sidebar">
+                
+                <!-- Sidbar Widgets -->
+                <div class="side-widgets" id="sidebarDiv">
+                    <div class="progress progress-striped active" id="menu-progress-bar">
+                        <div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                            <span class="sr-only"></span>
+                        </div>
+                    </div>
+                        
+                    <div id="side-list">
+                    </div>
+                </div>
+                
+                <!-- Side Menu -->
+                <ul class="list-unstyled side-menu">
+                    <li class="active">
+                        <a class="sa-side-first" href="javascript:void(0)" onclick="sideMenu(this)">
+                            <span class="icon icon-large sa-side-home"></span>
+                            <p class="menu-text-font-icon"> 首页 </p>
+                        </a>
+                    </li>
+                    <li id="hotArticleList">
+                        <a class="sa-side-hotArticleList" href="javascript:void(0)" onclick="sideMenu(this)">
+                            <span class="icon icon-large sa-side-form"></span>
+                            <p class="menu-text-font-icon"> 单贴预警 </p>
+                        </a>
+                    </li>
+                    <li id="clustering">
+                        <a class="sa-side-clustering" href="javascript:void(0)" onclick="sideMenu(this)">
+                            <span class="icon icon-large sa-side-table"></span>
+                            <p class="menu-text-font-icon"> 事件聚类 </p>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a class="sa-side-eventDefine" href="javascript:void(0)" onclick="sideMenu(this)">
+                            <span class="icon icon-large sa-side-form"></span>
+                            <p class="menu-text-font-icon"> 定义事件 </p>
+                        </a>
+                    </li> -->
+                    <li>
+                        <a class="sa-side-eventList" href="javascript:void(0)" onclick="sideMenu(this)">
+                            <span class="icon icon-large sa-side-listview"></span>
+                            <p class="menu-text-font-icon"> 事件列表 </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sa-side-warning" href="javascript:void(0)" onclick="sideMenu(this)">
+                            <span class="icon icon-large sa-side-spam"></span>
+                            <p class="menu-text-font-icon"> 舆情预警 </p>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a class="sa-side-allFavor" href="javascript:void(0)" onclick="sideMenu(this)">
+                            <span class="icon icon-large sa-side-chart"></span>
+                            <p class="menu-text-font-icon"> 媒体统计 </p>
+                        </a>
+                    </li>
+                    <li id="analysis" style="display: none;">
+                        <a class="sa-side-analysis" href="javascript:void(0)">
+                            <span class="icon icon-large sa-side-widget"></span>
+                            <p class="menu-text-font-icon"> 事件分析 </p>
+                        </a>
+                    </li>
+                    <li id="yuntu" style="display: none;">
+                        <a class="sa-side-yuntu" href="javascript:void(0)">
+                            <span class="icon icon-large sa-side-widget"></span>
+                            <p class="menu-text-font-icon"> 热词分析 </p>
+                        </a>
+                    </li>
+                    <li id="systemSet">
+                        <a class="sa-side-systemSet" href="javascript:void(0)" onclick="sideMenu(this)">
+                            <span class="fa fa-gears icon-large"></span>
+                            <p class="menu-text-font-icon"> 系统设置 </p>
+                        </a>
+                    </li>
+                    <li id="personMark">
+                        <a class="sa-side-personMark" href="javascript:void(0)" onclick="sideMenu(this)">
+                            <span class="icon icon-large sa-side-typography"></span>
+                            <p class="menu-text-font-icon"> 人工标注 </p>
+                        </a>
+                    </li>
+                    
+                    <!-- <li>
+                        <a class="sa-side-model" href="javascript:void(0)" onclick="sideMenu(this)">
+                            <span class="icon icon-large">&#61814;</span>
+                            <p class="menu-text-font-icon"> 具体事件分析 </p>
+                        </a>
+                    </li> -->
+                    <!-- <li id="menu-setting" class="dropdown">
+                        <a class="sa-side-setting" href="javascript:void(0)" onclick="sideMenu(this)">
+                            <span class="icon icon-large">&#61886;</span>
+                            <p class="menu-text-font-icon"> 系统设置 </p>
+                        </a>
+                        
+                        <ul class="list-unstyled menu-item">
+                            <li id="greyWhite"><a href="javascript:void(0)" onClick="colorSet('white');"> 配色方案0 (灰白色调) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('chrome');"> 配色方案1 (素色调) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('blue');"> 配色方案2 (冷色调) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('sunset');"> 配色方案3 (暖色调) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('city');"> 配色方案4 (city) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('cloth');"> 配色方案5 (cloth) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('greenish');"> 配色方案6 (greenish) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('kiwi');"> 配色方案7 (kiwi) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('lights');"> 配色方案8 (lights) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('nexus');"> 配色方案9 (nexus) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('night');"> 配色方案10 (night) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('ocean');"> 配色方案11 (ocean) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('sunny');"> 配色方案12 (sunny) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('tectile');"> 配色方案13 (tectile) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('violate');"> 配色方案14 (violate) </a></li>
+                            <li><a href="javascript:void(0)" onClick="colorSet('yellow');"> 配色方案15 (yellow) </a></li>
+                        </ul>
+                    </li> -->
+                </ul>
+            </aside>
+        
+            <!-- Content -->
+            <section id="content" class="container">
+            
+                <!-- Messages Drawer -->
+                <div id="messages" class="tile drawer animated">
+                    <div class="listview narrow">
+                        <div class="media">
+                            <a href="">Send a New Message</a>
+                            <span class="drawer-close">&times;</span>
+                            
+                        </div>
+                        <div class="overflow" style="height: 254px">
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/1.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">Nadin Jackson - 2 Hours ago</small><br>
+                                    <a class="t-overflow" href="">Mauris consectetur urna nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu adipiscing lectus</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/2.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">David Villa - 5 Hours ago</small><br>
+                                    <a class="t-overflow" href="">Suspendisse in purus ut nibh placerat Cras pulvinar euismod nunc quis gravida. Suspendisse pharetra</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/3.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">Harris worgon - On 15/12/2013</small><br>
+                                    <a class="t-overflow" href="">Maecenas venenatis enim condimentum ultrices fringilla. Nulla eget libero rhoncus, bibendum diam eleifend, vulputate mi. Fusce non nibh pulvinar, ornare turpis id</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/4.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">Mitch Bradberry - On 14/12/2013</small><br>
+                                    <a class="t-overflow" href="">Phasellus interdum felis enim, eu bibendum ipsum tristique vitae. Phasellus feugiat massa orci, sed viverra felis aliquet quis. Curabitur vel blandit odio. Vestibulum sagittis quis sem sit amet tristique.</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/1.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">Nadin Jackson - On 15/12/2013</small><br>
+                                    <a class="t-overflow" href="">Ipsum wintoo consectetur urna nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu adipiscing lectus</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/2.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">David Villa - On 16/12/2013</small><br>
+                                    <a class="t-overflow" href="">Suspendisse in purus ut nibh placerat Cras pulvinar euismod nunc quis gravida. Suspendisse pharetra</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/3.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">Harris worgon - On 17/12/2013</small><br>
+                                    <a class="t-overflow" href="">Maecenas venenatis enim condimentum ultrices fringilla. Nulla eget libero rhoncus, bibendum diam eleifend, vulputate mi. Fusce non nibh pulvinar, ornare turpis id</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/4.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">Mitch Bradberry - On 18/12/2013</small><br>
+                                    <a class="t-overflow" href="">Phasellus interdum felis enim, eu bibendum ipsum tristique vitae. Phasellus feugiat massa orci, sed viverra felis aliquet quis. Curabitur vel blandit odio. Vestibulum sagittis quis sem sit amet tristique.</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/5.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">Wendy Mitchell - On 19/12/2013</small><br>
+                                    <a class="t-overflow" href="">Integer a eros dapibus, vehicula quam accumsan, tincidunt purus</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media text-center whiter l-100">
+                            <a href=""><small>VIEW ALL</small></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification Drawer -->
+                <div id="notifications" class="tile drawer animated">
+                    <div class="listview narrow">
+                        <div class="media">
+                            <a href="">Notification Settings</a>
+                            <span class="drawer-close">&times;</span>
+                        </div>
+                        <div class="overflow" style="height: 254px">
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/1.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">Nadin Jackson - 2 Hours ago</small><br>
+                                    <a class="t-overflow" href="">Mauris consectetur urna nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu adipiscing lectus</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/2.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">David Villa - 5 Hours ago</small><br>
+                                    <a class="t-overflow" href="">Suspendisse in purus ut nibh placerat Cras pulvinar euismod nunc quis gravida. Suspendisse pharetra</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/3.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">Harris worgon - On 15/12/2013</small><br>
+                                    <a class="t-overflow" href="">Maecenas venenatis enim condimentum ultrices fringilla. Nulla eget libero rhoncus, bibendum diam eleifend, vulputate mi. Fusce non nibh pulvinar, ornare turpis id</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/4.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">Mitch Bradberry - On 14/12/2013</small><br>
+                                    <a class="t-overflow" href="">Phasellus interdum felis enim, eu bibendum ipsum tristique vitae. Phasellus feugiat massa orci, sed viverra felis aliquet quis. Curabitur vel blandit odio. Vestibulum sagittis quis sem sit amet tristique.</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/1.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">Nadin Jackson - On 15/12/2013</small><br>
+                                    <a class="t-overflow" href="">Ipsum wintoo consectetur urna nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu adipiscing lectus</a>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img width="40" src="{$webroot}assets/img/profile-pics/2.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted">David Villa - On 16/12/2013</small><br>
+                                    <a class="t-overflow" href="">Suspendisse in purus ut nibh placerat Cras pulvinar euismod nunc quis gravida. Suspendisse pharetra</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media text-center whiter l-100">
+                            <a href=""><small>VIEW ALL</small></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Labels -->
+                <div class="block-area" id="content-div">
+                    <iframe src="{$webroot}index/sourcedata" name="content-iframe" id="content-iframe" scrolling="auto" onload="changeFrameHeight()" frameborder="0"></iframe>
+                </div>
+            </section>
+        </section>
+        
+        <!-- Javascript Libraries -->
+        <!-- jQuery -->
+        <script src="{$webroot}assets/js/jquery.min.js"></script> <!-- jQuery Library -->
+        
+        <!-- Bootstrap -->
+        <script src="{$webroot}assets/js/bootstrap.min.js"></script>
+        
+        <!-- UX -->
+        <script src="{$webroot}assets/js/scroll.min.js"></script> <!-- Custom Scrollbar -->
+        <script src="{$webroot}assets/js/resize.js"></script>
+        <script src="{$webroot}assets/js/select.min.js"></script> <!-- Custom Select -->
+        <script src="{$webroot}assets/js/moment.min.js"></script> <!-- Custom Multi Select -->
+        <script src="{$webroot}assets/js/daterangepicker.js"></script> <!-- Date & Time Picker -->
+        
+        <!-- All JS functions -->
+        <script src="{$webroot}assets/js/functions.js"></script>
+        
+        <!-- inline scripts related to this page -->
+        <script>
+            var in_array = function(arr){
+                // 遍历是否在数组中
+                for(var i=0,k=arr.length;i<k;i++){
+                  if(this==arr[i]){
+                    return true;  
+                  }
+                }
+                
+                // 如果不在数组中就会返回false
+                return false;
+            }
+            // 给字符串添加原型
+            String.prototype.in_array = in_array;
+            // 给数字类型添加原型
+            Number.prototype.in_array = in_array;
+            
+            jQuery(document).ready(function(){
+                goSideMenu();
+                refreshSettingMenu();
+                changeFrameHeight();
+                highLight();
+                fileBottomChange();
+                recoverMenuColor();
+                $("#content-div").resize(changeFrameHeight);
+                //$('#content-iframe').niceScroll();
+                /*var menuHeight = $("#menu-setting ul").eq(0).height() - 40;
+                
+                $("#menu-setting ul").eq(0).attr("style", "left: 75px; top: -" + menuHeight + "px;");*/
+                expandOrSmall();
+            });
+            
+            var refreshSettingMenu = function(){
+                var wHeight = $(window).height();
+                var mTop = wHeight - 420;
+                
+                if (mTop > 0){
+                    $("#menu-setting").attr("style", "margin-top: "+mTop+"px;");
+                    $("#menu-setting").removeClass("hide");
+                    
+                }else{
+                    $("#menu-setting").addClass("hide");
+                    
+                } 
+            }
+            
+            var sideMenu = function(item){
+                if ($(item).parent().attr("class") == "active") return;
+                
+                $("ul.side-menu > li.active").removeClass("active");
+                $(item).parent().addClass("active");
+                /*alert($(item).parent().className);*/
+                $("#analysis").hide();
+                $("#yuntu").hide();
+                goSideMenu();
+            }
+            var setModel=function(item){
+
+                $("ul.side-menu > li.active").removeClass("active");
+                $(".sa-side-model").parent("li").addClass("active");
+               
+                event(item.innerHTML);
+                var id=item.id;
+                showModel(id);
+                applyFilter(id);
+                showTable(id,item.innerHTML);
+                /*if (item.className=='firstLi') {
+                    var url = "./index/data_model/";
+                    $("#content-iframe").attr("src",url);
+                }*/
+            }
+
+            
+            //跳入详细事件分析
+            var event=function(value){
+                $("ul.side-menu > li.active").removeClass("active");
+                $(".sa-side-yuntu").parent("li").addClass("active");
+                $("#analysis").show();
+                $("#page-title").html(value);
+                $.get("{$webroot}index/menu_model", function(htmlData, status){
+                    $("#menu-progress-bar").hide();
+                    $("#side-list").html(htmlData);
+                });
+                $("#sidebarDiv").show();
+                $("#content").css({"margin-left":"300px"});
+                
+                /*alert(item.id);*/
+            }
+            
+            var goSideMenu = function(value){
+                var curItem = $("ul.side-menu > li.active > a").attr("class").replace("sa-side-", "");
+                 $("#side-list").html("");
+                 $("#menu-progress-bar").show();
+                $("#page-title").html(value);
+                switch(curItem){
+                    case "first": // 数据
+                        /*$.get("{$webroot}index/menu_data", function(htmlData, status){
+                            $("#menu-progress-bar").hide();
+                            $("#side-list").html(htmlData);
+                        });*/
+                        var url = "./index/sourcedata/";
+                        /*var name=eventName.join(",");
+                        url+=name;*/
+                        url=encodeURI(url);
+                        $("#content-iframe").attr("src",url);
+                        $("#page-title").html("");
+                        $("#sidebarDiv").hide();
+                        $("#content").css({"margin-left":"75px"});
+                        /*$.ajax({
+                          url: "/trans/api_get_heat",
+                          data:postData,
+                          type:"post",
+                          dataType: "json",
+                          success: function(result){ 
+                            
+                          }                           
+                        });*/
+                    break;
+                    case "eventDefine":{
+                        var url = "./index/mytable/";
+                        $("#content-iframe").attr("src",url);
+                        $("#page-title").html("");
+                        $("#sidebarDiv").hide();
+                        $("#content").css({"margin-left":"75px"});
+                        break;
+                    }
+                    case "eventList":  // 
+                        var url = "./index/mysourcedata/";
+                        $("#content-iframe").attr("src",url);
+                        $("#page-title").html("");
+                        $("#sidebarDiv").hide();
+                        $("#content").css({"margin-left":"75px"});
+                        
+                    break;
+                    case "warning": // 
+                        $("#sidebarDiv").show();
+                        $.get("{$webroot}index/warning_page", function(htmlData, status){
+                            $("#menu-progress-bar").hide();
+                            $("#side-list").html(htmlData);
+                        });
+                        $("#page-title").html("");
+                        $("#content").css({"margin-left":"300px"});
+                        var url='./index/warning/';
+                        $("#content-iframe").attr('src',url);
+                    break;
+                    case "allFavor": // 
+                        $("#sidebarDiv").show();
+                        $.get("{$webroot}index/menu_data", function(htmlData, status){
+                            $("#menu-progress-bar").hide();
+                            $("#side-list").html(htmlData);
+                        });
+                        $("#page-title").html("");
+                        $("#content").css({"margin-left":"300px"});
+                        var url='./index/mytheme/';
+                        $("#content-iframe").attr('src',url);
+                    break;
+                    case "systemSet":// 系统设置
+                        $("#sidebarDiv").show();
+                        $.get("{$webroot}index/menu_export", function(htmlData, status){
+                            $("#menu-progress-bar").hide();
+                            $("#side-list").html(htmlData);
+                        });
+                        $("#page-title").html("");
+                        $("#content").css({"margin-left":"300px"});
+                        var url='./user/systemuser/';
+                        $("#content-iframe").attr('src',url);
+                        $("#page-title").html("系统用户管理");
+                    break;
+                    case "page":   // 案例
+                    break;
+                    case "clustering":{
+                        var url = "./index/tablev1/";
+                        $("#content-iframe").attr("src",url);
+                        $("#page-title").html("");
+                        $("#sidebarDiv").hide();
+                        $("#content").css({"margin-left":"75px"});
+                        
+                        break;
+                    }
+                    case "personMark":{
+                        var url = "./index/mark/";
+                        $("#content-iframe").attr("src",url);
+                        $("#page-title").html("");
+                        $("#sidebarDiv").hide();
+                        $("#content").css({"margin-left":"75px"});
+                        break;
+                    }
+                    case "hotArticleList":{
+                        var url = "./index/hotArticleList/";
+                        $("#content-iframe").attr("src",url);
+                        $("#page-title").html("");
+                        $("#sidebarDiv").hide();
+                        $("#content").css({"margin-left":"75px"});
+                        break;
+                    }    
+                    /*case "setting":   // 系统设置
+                        $.get("{$webroot}index/menu_setting", function(htmlData, status){
+                            $("#menu-progress-bar").hide();
+                            $("#side-list").html(htmlData);
+                        });
+                    break;*/
+                }
+            }
+            
+            //云图词语跳进
+            function yunArticles(name){
+                var url="./index/page2/"+name;
+                $("#yuntu").show();
+                $("ul.side-menu > li.active").removeClass("active");
+                $(".sa-side-yuntu").parent("li").addClass("active");
+                $("#content-iframe").attr("src",url);
+                $("#page-title").html(name);
+                $("#sidebarDiv").hide();
+                $("#content").css({"margin-left":"75px"});
+            }
+
+            function changeFrameHeight(){
+                var ifm = document.getElementById("content-iframe"); 
+                ifm.height = document.documentElement.clientHeight - 55;
+                ifm.width = $("#content-div").width() - 3;
+            }
+            window.onresize=function(){  
+                refreshSettingMenu();
+                changeFrameHeight();
+                
+            }
+            
+            var showUploadPage = function(item){
+                var bodyId = $("body").attr("id");
+                var url = "./index/sourcedata/" + bodyId;
+                $("#content-iframe").attr("src",url);
+                $("#page-title").text("文件上传/管理");
+                $(".list-active").removeClass("list-active");
+                $(item).addClass("list-active");
+            }
+            var id;
+            var titleName;
+            var showTable = function(item,title){
+                if (typeof(item) == "string"){
+                    id=item;
+                }
+                
+                if (title) {
+                    titleName=title;
+                }
+                var bodyId = $("body").attr("id");
+                var echartName=item.id;
+                /*alert(echartName);*/
+                var url = "./index/table/" + id+"/"+echartName+"/"+titleName;
+                url=encodeURI(url);
+                var postData={};
+                postData.keywords="aa";
+                postData.channel=0;
+              
+                $("#content-iframe").attr("src", url);
+            }
+            //媒体友好度分析页面
+            var channelFavor=function(item){
+                var chooseName=item.id;
+                
+                var bodyId = $("body").attr("id");
+                var url = "./index/mytheme/" + id+"/"+chooseName;
+                $("#content-iframe").attr("src", url);
+            }
+
+            //系统设置
+            var systemSetPage=function(item){
+                var chooseName=item.id;
+                var bodyId = $("body").attr("id");
+                var url;
+                switch(chooseName){
+                    case 'userSet':{
+                        url='./user/systemuser/';
+                        $("#content-iframe").attr("src", url);
+                        $("#page-title").html("系统用户管理");
+                        break;
+                    }
+                    case 'rightsSet':{
+                        url='./user/group/';
+                        $("#content-iframe").attr("src", url);
+                        $("#page-title").html("用户组管理");
+                        break;
+                    }
+                    default:{
+                        break;
+                    }
+                }
+                
+            }
+
+            var showModel = function(item){
+                
+                if (typeof(item) == "string"){
+                    id=item;
+                }
+                $(".side-menu li.active").removeClass("active");
+                $(".sa-side-analysis").parent("li").addClass("active");
+                var bodyId = $("body").attr("id");
+                /*var chooseName=$("#target").val();*/
+                var chooseName=$(item).attr("id");
+               
+                /*alert(aid);*/
+                /*alert(chooseName);*/
+                var url = "./index/data_model/" + bodyId;
+                // $("#page-title").text($.trim($(item).text()));
+                url+="/"+chooseName+"/"+id;
+                $("#content-iframe").attr("src", url);
+                /*var postData={};
+                postData.keywords="aa";
+                postData.channel=0;
+                var json={};
+                json.scale="human";
+                json.events=[];
+                $.ajax({
+                      url: "/trans/api_get_transmission",
+                      data: postData,
+                      type:"post",
+                      dataType: "json",  
+                      success: function(result){
+                       
+                        for(var i=1;i<result.length;i++){
+                            var sJson={};
+                            sJson.start_date={};
+                            sJson.text={};                            
+                            var tArr=result[i].publish_datetime.split(" ");
+                            var year=parseInt(tArr[0].split("-")[0]);
+                            var month=parseInt(tArr[0].split("-")[1]);
+                            var day=parseInt(tArr[0].split("-")[2]);
+                            var hour=parseInt(tArr[1].split(":")[0]);
+                            var minute=parseInt(tArr[1].split(":")[1]);
+                            var second=parseInt(tArr[1].split(":")[2]);
+                            var text=result[i].media;
+                            sJson.start_date.year=year;
+                            sJson.start_date.month=month;
+                            sJson.start_date.day=day;
+                            sJson.start_date.hour=hour;
+                            sJson.start_date.minute=minute;
+                            sJson.start_date.second=second;
+                            sJson.text.headline=text;
+                            sJson.text.text="<p class='title'>中大“限外令”：为避免校园成“公园”</p><p class='content'>“限外”可以更好地保障师生的财产安全，校园偷窃事件一点都不少，似乎有更多地理由让“限外”具备实施的必要性。高校既然成为学生由校园向社会过渡的重要场所，自由开放就不能被“限制”，从现在来说，“限外”是对“限制”的妥协，而“开放日”是对“自由开放”的妥协，始终没有让人感到达到更好的平衡点。</p><a href='https://www.baidu.com'  target='_blank'>新闻链接</a>";
+                            json.events.push(sJson);
+                        }
+                        var jsonStr=JSON.stringify(json);
+                        var pams = [];
+                        pams.push($('<input>', {name: 'age', value: jsonStr}));
+                        var form = $("<form></form>");
+                        form.attr('action',url);
+                        form.attr('method','post');
+                        form.attr('target','content-iframe');
+                        form.css("display","none");
+                        form.append(pams);
+                        $("body").append(form);
+
+                        form.submit();
+                      }
+                });*/
+            };
+            var applyFilter = function(item){
+                if (typeof(item) == "string"){
+                    id=item;
+                }
+                var bodyId = $("body").attr("id");
+                var echartName=item.id;
+                var areaName=$("#area").val();            
+                var url = "./index/data_filtered/" + id+"?name="+echartName+"&area="+areaName;
+                url=encodeURI(url);
+                $("#content-iframe").attr("src", url);
+                /*$("#page-title").text("数据分析");*/
+                $("#content-iframe").attr("src", url);
+               /* $.ajax({
+                      url: "/index/api_get_heat",
+                      type:"post",
+                      dataType: "json",  
+                      success: function(result){
+                        console.log(result);
+                        
+                      }
+
+                });*/
+            };
+
+            var warningPage=function(item){
+                var id=item.id;
+                
+                var url="./index/warning/"+id;
+                $("#content-iframe").attr('src',url);
+            }
+            var setPriviledge = function(item){
+                var bodyId = $("body").attr("id");
+                var url = "./index/priviledge/" + bodyId;
+                $("#content-iframe").attr("src", url);
+                $("#page-title").text($.trim($(item).text()));
+                $(".list-active").removeClass("list-active");
+                $(item).parent().addClass("list-active");
+            }
+            
+            var colorSet = function(option){
+                //$("body").removeClass($("body").attr("class"));
+                if (option.in_array(["cloth", "tectile"])) $("body").attr("id", "skin-" + option);
+                else
+                    $("body").attr("id", "skin-blur-" + option);
+
+                if (option.indexOf("white") >= 0){
+                    $(window.frames["content-iframe"].document).find("body").attr("id", "skin-blur-" + option);
+                } else {
+                    $(window.frames["content-iframe"].document).find("body").attr("id", "skin-transparent");
+                }
+                $("#showEchart").click();
+
+            }
+           
+            //高亮显示导航条选中项
+            function highLight(){
+                $(document).on("click", "#skin-blur-white .li-choose", function() {
+                    $(".li-choose").each(function(){
+                        $(this).find("a").removeClass("highLight");
+                    })
+                    $(this).find("a").addClass("highLight");
+                    // $(".btnRed").removeClass("btnRed");
+                }); 
+                $(document).on("click","#skin-blur-white #modelTable tbody a",function(){
+                    $(this).addClass("highLight");
+                })
+                $(document).on("click","#skin-blur-white .modelDiv .btn",function(){
+                    $("#skin-blur-white #modelTable tbody a").removeClass("highLight");
+                
+                })
+                /*$(document).on("click","#skin-blur-white #data-list tbody a",function(){
+                    $("#skin-blur-white #data-list tbody a").each(function(){
+                        $(this).removeClass("highLight");
+                    })
+                    $(this).addClass("highLight");
+                })*/
+            }
+            //文件按钮
+            function fileBottomChange(){
+                $(document).on("click","#skin-blur-white #file-mnt-bt",function(){
+                    $(".li-choose").each(function(){
+                        $(this).find("a").removeClass("highLight");
+                    })
+                    // $(this).addClass("btnRed");
+                   
+                })
+            }
+            //切换色系恢复右侧menu颜色
+            function recoverMenuColor(){
+                $(".menu-item a").click(function(){
+                    $(".li-choose").each(function(){
+                        $(this).find("a").removeClass("highLight");
+                    })
+                    $("#modelTable tbody a").removeClass("highLight");
+                    $("#skin-blur-white #data-list tbody a").removeClass("highLight");
+                })
+            } 
+            //
+            var eventName=[];
+            //将事件名传到index页面
+            function sendEvent() {
+                eventName=[];
+              var length=$("#content-iframe").contents().find("#eventList .body div").length;
+              var name=$("#content-iframe").contents().find("#eventList .body div")
+              for(var i=0;i<length;i++){
+                eventName[i]=name[i].innerHTML;
+              }
+            }
+
+            //点击左上角扩张/缩小iframe
+            function expandOrSmall(){
+                $("#menu-toggle").click(function(){
+                    if ($("#content").css("margin-left")=="75px"||$("#content").css("margin-left")=="300px") {
+                        $("#content").css("margin-left","0px");
+                    }else if ($("#sidebarDiv").css("display")=="none") {
+                        $("#content").css("margin-left","75px");
+                    }else{
+                        $("#content").css("margin-left","300px");
+                    }
+                    
+                })
+            }
+        </script>
+    </body>
+</html>
+

@@ -1,0 +1,28 @@
+<div class="table-responsive overflow" id="data-list">
+       <div id="hotContent">
+           <div class="content">
+                <!-- <div>
+                  <a href="#"><p id="" class="showP showPStyle">友好度分析</p></a>
+                </div> -->
+                <div class="header">
+                   <p>系统设置</p>
+                </div>
+                <div class="body">
+                  <div>
+                    <a href="#"><p id="userSet" class="showP showPStyle" onclick="systemSetPage(this)">用户设置</p></a>
+                  </div>
+                  <div>
+                    <a href="#"><p id="rightsSet" class="showP" onclick="systemSetPage(this)">权限设置</p></a>
+                  </div>
+                </div>
+            </div>
+       </div>
+    </div>
+<script type="text/javascript">
+    $(".showP").click(function(){
+      $(".showP").each(function(){
+        $(this).removeClass("showPStyle");
+      });
+      $(this).addClass("showPStyle");
+    })
+</script>

@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<!--[if IE 9 ]>
+<html class="ie9">
+<![endif]-->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="UTF-8">
+
+        <meta name="description" content="Violate Responsive Admin Template">
+        <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+        <title>信号分析</title>
+            
+        <!-- CSS -->
+        <link href="{$webroot}assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/animate.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/form.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/file-manager.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/style.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/icons.css" rel="stylesheet">
+        <link href="{$webroot}assets/css/generics.css" rel="stylesheet">
+        <style type="text/css">
+            #content {margin-left: 0}
+            .elfinder-button-icon-totrainset, .elfinder-button-icon-tobussnset {
+                width: 100%;
+                border: rgba(255, 255, 255, 0.8);
+                border-style: solid;
+                border-width: 1px;
+                padding: 3px 5px 3px 5px;
+                color: rgba(255, 255, 255, 0.8);
+                background-color: rgba(255, 0, 0, 0.2);
+            }
+            .ui-state-disabled .elfinder-button-icon-totrainset, .ui-state-disabled .elfinder-button-icon-tobussnset {
+                border: white;
+                border-style: solid;
+                border-width: 1px;
+                color: white;
+                background-color: rgba(255, 0, 0, 0);
+            }
+
+            #skin-blur-white{
+                color: #666666;
+            }
+            #skin-blur-white .elfinder-toolbar{
+                border-bottom: 1px solid #ddd;
+               /* border-top: 1px solid #ddd;*/
+            }
+            #skin-blur-white .elfinder-navbar{
+                border-right: 1px solid #ddd;
+            }
+            #skin-blur-white .file-search{
+                border: 1px solid #ddd;
+                color: #666666;
+            }
+            #skin-blur-white .elfinder-cwd-filename{
+                color: #666666;
+            }
+            /*           舆情
+*/           #skin-blur-white #main,#skin-blur-white #content{
+            width: 99.2%;
+            height: 100%;
+           }
+           #skin-blur-white #content{
+            padding: 10px;
+           }
+           #skin-blur-white #content>div{
+            padding: 0px 5px;
+           }
+           #skin-blur-white #eventList,#skin-blur-white #eventMessage{
+            border:1px solid #ddd;
+            background-color: #fff;
+            width: 100%;
+            border-radius: 5px !important;
+           }
+           #skin-blur-white .title{
+            border-bottom: 1px solid #ddd;
+            padding-left: 20px;
+           }
+           #skin-blur-white .title p{
+            margin: 0px;
+            display: inline-block;
+            padding: 10px 20px 5px 0px;
+            border-bottom: 1px solid #435f76;
+            color: #435f76;
+            font-size: 18px;
+            transform: scaleX(0.9);
+           }
+           #skin-blur-white #eventList .body>div{
+            padding: 10px 0px;
+            color: #666;
+            border-bottom: 1px solid #ddd;
+           }
+           #skin-blur-white #eventList .body{
+            padding: 0px 20px;
+           }
+           #skin-blur-white .body label{
+            color: #666;
+            font-weight: 600;
+            font-size: 13px;
+           }
+           #skin-blur-white .form-control{
+            border:1px solid #ddd;
+            background-color: #fff;
+            background: #fff;
+            color: #666;
+            box-shadow: none;
+            border-radius: 5px!important;
+           }
+           #skin-blur-white .form-control:focus{
+            border:1px solid rgba(67, 95, 118,0.6);
+            box-shadow: 0px 0px 5px #435f76;
+           }
+           #skin-blur-white form{
+            padding: 10px 20px;
+           }
+           #skin-blur-white #submit{
+            background-color: #fff;
+            background: #fff;
+            border:1px solid rgba(67, 95, 118,0.6);
+            color: rgb(67, 95, 118);
+            border-radius: 5px!important;
+           }
+           #skin-blur-white #submit:hover{
+            box-shadow: 0px 0px 5px rgba(67, 95, 118,0.6);
+           }
+           #skin-blur-white #submit:active{
+            background-color:rgba(67, 95, 118,0.6);
+            color: #fff;
+           }
+           #skin-blur-white div.form-group{
+            margin-bottom: 20px;
+           }
+           #skin-blur-white #eventTitle,#skin-blur-white #eventBody{
+            width: 100%;
+            
+           }
+           #skin-blur-white #eventBody td,#skin-blur-white #eventTitle th{
+            padding:5px 10px;
+            /*text-align: center;*/
+           }
+          
+           #skin-blur-white #eventTitle tr,#skin-blur-white #eventBody tr{
+            width: 100%;
+            padding: 5px 0px;
+            
+           }
+           #skin-blur-white #eventBody tr{
+            border-top: 1px solid #ddd;
+           }
+           #eventBody tr:nth-child(odd){
+            background-color: #eaeaea;
+           }
+
+           #skin-blur-white #eventBody a{
+            color: #666;
+            display: block;
+           }
+           #skin-blur-white #eventBody a:focus,#skin-blur-white #eventBody a:hover{
+            color: #435f76;
+            text-decoration: underline;
+           }
+           .num{
+            min-width: 100px;
+            text-align: center;
+           }
+           
+           td {
+               padding: 5px 10px;
+           }
+        </style>
+    </head>
+    
+    <body style="background-color: rgba(255, 255, 255, 0);" id="skin-blur-white">
+        <section id="main" class="p-relative" role="main">
+            <!-- Content -->
+            <section id="content" class="container">
+                <div class="col-md-12">
+                  <div id="eventList">
+                    <div class="title">
+                      <p>热度预警信号</p>
+                    </div>
+                    <div class="body">
+                      <table id="eventTitle">
+                        <tr>
+                            <th>预警时间</th>
+                            <th>事件</th>
+                            <th>标题</th>
+                            <th>媒体</th>
+                            <th>原因</th>
+                        </tr>
+                        <tbody id="eventBody">
+						<tr>
+						  <td>2017-06-22 16:18:54</td>
+                          <td> 限外令 </td>
+                          <td> 限外令 </td>
+                          <td> 网易新闻 </td>
+                          <td> 网易新闻有该类敏感词 </td>
+                        </tr>
+                        <tr>
+                          <td>2017-06-22 16:18:54</td>
+                          <td> 限外令 </td>
+                          <td> 限外令 </td>
+                          <td> 网易新闻 </td>
+                          <td> 网易新闻有该类敏感词 </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                
+			    <div class="col-md-12" style="margin: 10px 0 10px 0;">
+               	  <div id="eventList">
+                    <div class="title">
+                      <p>媒体预警信号</p>
+                    </div>
+                    <div class="body">
+                      <table id="eventTitle">
+                        <tr>
+                          <th>预警时间</th>
+                          <th>事件</th>
+                          <th>标题</th>
+                          <th>媒体</th>
+                          <th>原因</th>
+                        </tr>
+                        <tbody id="eventBody">
+						<tr>
+						  <td>2017-06-22 16:18:54</td>
+                          <td> 限外令 </td>
+                          <td> 限外令 </td>
+                          <td> 网易新闻 </td>
+                          <td> 网易新闻有该类敏感词 </td>
+                        </tr>
+                        <tr>
+                          <td>2017-06-22 16:18:54</td>
+                          <td> 限外令 </td>
+                          <td> 限外令 </td>
+                          <td> 网易新闻 </td>
+                          <td> 网易新闻有该类敏感词 </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+				  </div>
+				  
+				  <div class="col-md-12">
+				  <div id="eventList">
+                    <div class="title">
+                      <p>敏感词预警信号</p>
+                    </div>
+                    <div class="body">
+                      <table id="eventTitle">
+                        <tr>
+                          <th>预警时间</th>
+                          <th>事件</th>
+                          <th>标题</th>
+                          <th>媒体</th>
+                          <th>原因</th>
+                        </tr>
+                        <tbody id="eventBody">
+						<tr>
+						  <td>2017-06-22 16:18:54</td>
+                          <td> 限外令 </td>
+                          <td> 限外令 </td>
+                          <td> 网易新闻 </td>
+                          <td> 网易新闻有该类敏感词 </td>
+                        </tr>
+                        <tr>
+                          <td>2017-06-22 16:18:54</td>
+                          <td> 限外令 </td>
+                          <td> 限外令 </td>
+                          <td> 网易新闻 </td>
+                          <td> 网易新闻有该类敏感词 </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+				  </div>
+            </section>
+        </section>
+        
+        <!-- Javascript Libraries -->
+        <!-- jQuery -->
+        <script src="{$webroot}assets/js/jquery.min.js"></script> <!-- jQuery Library -->
+        <script src="{$webroot}assets/js/jquery-ui.min.js"></script> <!-- jQuery UI -->
+        
+        <!-- Bootstrap -->
+        <script src="{$webroot}assets/js/bootstrap.min.js"></script>
+        
+        
+        <!-- UX -->
+        <script src="{$webroot}assets/js/scroll.min.js"></script> <!-- Custom Scrollbar -->
+        
+        
+        <!-- All JS functions -->
+
+        <script type="text/javascript">
+           
+           $(document).ready(function() { setEventList(); });
+           
+            function setEventList(){
+                $.ajax({
+                    url: "/event/api_get_eventlist",
+                    type:"post",
+                    dataType: "json",
+                    success: function(result){ 
+                      console.log(result);
+                      var str="";
+                      for(var i=0;i<result.length;i++){
+                        str+="<tr><td><a href='#' onclick='parent.setModel(this);parent.showModel();' id='"+result[i].event_id+"'>"+result[i].event_name+"</a></td><td>"+result[i].add_datetime+"</td><td class='num'>";
+                        if (result[i].original_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].original_total+"</td><td class='num'>";
+                        }
+                        if (result[i].forward_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].forward_total+"</td><td class='num'>";
+                        }
+                        if (result[i].reply_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].reply_total+"</td><td class='num'>";
+                        }
+                        if (result[i].read_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].read_total+"</td><td class='num'>";
+                        }
+                        if (result[i].like_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].like_total+"</td><td class='num'>";
+                        }
+                        if (result[i].collect_total==null) {
+                          str+="-</td><td class='num'>";
+                        }else{
+                          str+=result[i].collect_total+"</td><td class='num'>";
+                        }
+                        if (result[i].event_heat==null) {
+                          str+="-</td></tr>";
+                        }else{
+                          str+=result[i].event_heat+"</td></tr>";
+                        }
+                      }
+                      $("#eventBody").append(str);
+                      var length=$("#eventBody tr").eq(0).find("td").length;
+                      for(var i=0;i<length;i++){
+                        $("#eventTitle tr").find("th").eq(i).width($("#eventBody tr").eq(0).find("td").eq(i).width());
+                      }
+
+                    }                           
+                  });
+            }
+
+           
+        </script>
+    </body>
+</html>
+
