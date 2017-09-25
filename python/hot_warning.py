@@ -162,6 +162,7 @@ if __name__ == '__main__':
     print '_____start_____'
     start = time.time()
     HotWarning().word_warning()
+    HotWarning().target_warning()
 
     session.close()
     end = time.time()
