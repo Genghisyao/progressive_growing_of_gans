@@ -26,13 +26,11 @@ class HotWarning():
         sen_words = [] #敏感词汇
         for q in query:
             sen_mes.append((q[0], q[1]))
-            word = q[1].split('|')
-            sen_words.append(word)
-        print (len(sen_words[0]))
 
         hot_warning_mes = []
         for article_mes in self.hot_target:
-            warning_level = 0
+            #warning_level = 0
+            warning_level = ""
             warning_id = article_mes[0]
             warning_datetime = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
             warning_type = ""
@@ -41,19 +39,35 @@ class HotWarning():
             warning_value = ""
             for single in sen_mes:
                 word = single[1].split('|')
-                lev_word = ""
                 for w in word:
-                    if w in article_mes[2]:
-                        warning_level = single[0]
-                        warning_type = "sensitive_words"
-                        threshold_value = w
-                        reason = "文章中存在敏感词".decode('utf-8')
-                        lev_word = lev_word + w + " "
-                warning_value = lev_word
-                if(warning_value != ""):
-                    break
 
-            if (warning_level != 0):
+                    #组合敏感词
+                    if '&' in w:
+                        com_word = w.split('&')
+                        count = 0
+                        final_word = ""
+                        for single_word in com_word:
+                            if single_word in article_mes[2]:
+                                final_word += single_word + ' '
+                                count += 1
+                        if count == len(com_word):
+                            if (str(single[0]) not in warning_level):
+                                warning_level += str(single[0])
+                            warning_type = "sensitive_words"
+                            threshold_value = threshold_value + final_word + " "
+                            reason = "文章中存在敏感词".decode('utf-8')
+                            warning_value = warning_value + final_word + " "
+
+                    #单个敏感词
+                    elif w in article_mes[2]:
+                        #warning_level = single[0]
+                        if(str(single[0]) not in warning_level):
+                            warning_level += str(single[0])
+                        warning_type = "sensitive_words"
+                        threshold_value = threshold_value + w + " "
+                        reason = "文章中存在敏感词".decode('utf-8')
+                        warning_value = warning_value + w + " "
+            if (warning_level != ""):
                 warning_tuple = (warning_id, warning_level, warning_datetime, warning_type, threshold_value, reason, warning_value)
                 hot_warning_mes.append(warning_tuple)
 
@@ -64,14 +78,14 @@ class HotWarning():
             insert_data = []
             del_id = []
             for q in hot_warning_mes:
-                insert_data.append(" ('%s' ,%d,'%s','%s','%s','%s','%s') " % (q[0], q[1], q[2], q[3], q[4], q[5], q[6]))
+                insert_data.append(" ('%s' ,'%s','%s','%s','%s','%s','%s') " % (q[0], q[1], q[2], q[3], q[4], q[5], q[6]))
                 del_id.append("'" + q[0] + "'")
 
-        sql_insert = sql + ','.join(insert_data)
-        delete_sql = del_sql % ','.join(del_id)
-        session.execute(delete_sql)
-        session.execute(sql_insert)
-        session.commit()
+            sql_insert = sql + ','.join(insert_data)
+            delete_sql = del_sql % ','.join(del_id)
+            session.execute(delete_sql)
+            session.execute(sql_insert)
+            session.commit()
 
 
 
@@ -89,43 +103,40 @@ class HotWarning():
         hot_warning_mes = []
         #将热表的数据与阈值表的数据进行比较
         for article_mes in self.hot_target:
-            warning_level = 5
+            warning_level = 0
             warning_id = article_mes[0]
             warning_datetime = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-            print (warning_datetime)
             warning_type = ""
             threshold_value = 0
             reason = ""
             warning_value = 0
             for warning_threshold in hot_threshold:
-                if(warning_threshold[0] < warning_level):
-                    if(article_mes[3] >= warning_threshold[1]):
-                        print warning_threshold
-                        warning_level = warning_threshold[0]
-                        warning_type = "reply"
-                        threshold_value = warning_threshold[1]
-                        reason = "评论数量超过预警的阈值".decode('utf-8')
-                        warning_value = article_mes[3]
-                    elif (article_mes[4] >= warning_threshold[2]):
-                        warning_level = warning_threshold[0]
-                        warning_type = "read"
-                        threshold_value = warning_threshold[2]
-                        reason = "阅读数量超过预警的阈值".decode('utf-8')
-                        warning_value = article_mes[4]
-                    elif (article_mes[5] >= warning_threshold[3]):
-                        warning_level = warning_threshold[0]
-                        warning_type = "forward"
-                        threshold_value = warning_threshold[3]
-                        reason = "转发数量超过预警的阈值".decode('utf-8')
-                        warning_value = article_mes[5]
-                    elif (article_mes[6] >= warning_threshold[4]):
-                        warning_level = warning_threshold[0]
-                        warning_type = "heat"
-                        threshold_value = warning_threshold[4]
-                        reason = "热度超过预警的阈值".decode('utf-8')
-                        warning_value = article_mes[6]
-                if(warning_level != 5):
-                    warning_tuple = (warning_id, warning_level, warning_datetime, warning_type, threshold_value, reason, warning_value)
+                if(article_mes[3] >= warning_threshold[1]):
+                    warning_level = warning_threshold[0]
+                    warning_type = "reply"
+                    threshold_value = warning_threshold[1]
+                    reason = "评论数量超过预警的阈值".decode('utf-8')
+                    warning_value = article_mes[3]
+                elif (article_mes[4] >= warning_threshold[2]):
+                    warning_level = warning_threshold[0]
+                    warning_type = "read"
+                    threshold_value = warning_threshold[2]
+                    reason = "阅读数量超过预警的阈值".decode('utf-8')
+                    warning_value = article_mes[4]
+                elif (article_mes[5] >= warning_threshold[3]):
+                    warning_level = warning_threshold[0]
+                    warning_type = "forward"
+                    threshold_value = warning_threshold[3]
+                    reason = "转发数量超过预警的阈值".decode('utf-8')
+                    warning_value = article_mes[5]
+                elif (article_mes[6] >= warning_threshold[4]):
+                    warning_level = warning_threshold[0]
+                    warning_type = "heat"
+                    threshold_value = warning_threshold[4]
+                    reason = "热度超过预警的阈值".decode('utf-8')
+                    warning_value = article_mes[6]
+                if(warning_level != 0):
+                    warning_tuple = (warning_id, str(warning_level), warning_datetime, warning_type, threshold_value, reason, warning_value)
                     hot_warning_mes.append(warning_tuple)
                     break
 
@@ -136,21 +147,21 @@ class HotWarning():
             insert_data = []
             del_id = []
             for q in hot_warning_mes:
-                insert_data.append(" ('%s' ,%d,'%s','%s','%s','%s','%s') " % (q[0], q[1], q[2], q[3], q[4], q[5], q[6]))
+                insert_data.append(" ('%s' ,'%s','%s','%s','%s','%s','%s') " % (q[0], q[1], q[2], q[3], q[4], q[5], q[6]))
                 del_id.append("'" + q[0] + "'")
 
-        sql_insert = sql + ','.join(insert_data)
-        delete_sql = del_sql % ','.join(del_id)
-        session.execute(delete_sql)
-        session.execute(sql_insert)
-        session.commit()
+            sql_insert = sql + ','.join(insert_data)
+            delete_sql = del_sql % ','.join(del_id)
+            session.execute(delete_sql)
+            session.execute(sql_insert)
+            session.commit()
 
 
 
 if __name__ == '__main__':
     print '_____start_____'
     start = time.time()
-    HotWarning().target_warning()
+    HotWarning().word_warning()
 
     session.close()
     end = time.time()
