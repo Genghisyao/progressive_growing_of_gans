@@ -1,6 +1,9 @@
 # -*- coding:utf-8 -*-
 from db_init import *
 import time,re
+import  sched
+
+time_sch = sched.scheduler(time.time, time.sleep)
 
 class HotWarning():
 
@@ -40,7 +43,6 @@ class HotWarning():
             for single in sen_mes:
                 word = single[1].split('|')
                 for w in word:
-
                     #组合敏感词
                     if '&' in w:
                         com_word = w.split('&')
@@ -156,14 +158,11 @@ class HotWarning():
             session.execute(sql_insert)
             session.commit()
 
-
-
 if __name__ == '__main__':
     print '_____start_____'
     start = time.time()
     HotWarning().word_warning()
     HotWarning().target_warning()
-
     session.close()
     end = time.time()
     print '%.4f' % (end - start)
