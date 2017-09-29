@@ -1,0 +1,13 @@
+# -*- coding:utf-8 -*-
+from db_init import *
+
+class WarningSend():
+    def __init__(self):
+        sql_query = """
+                      SELECT type, warning_ datetime, threshold_value, data_value, reason FROM hot_article_warning
+                      """
+        query = session.execute(sql_query)
+        hot_target = []
+        for q in query:
+            hot_target.append((q[0], q[1], q[2], q[3], q[4], q[5], q[6]))
+        self.hot_target = hot_target

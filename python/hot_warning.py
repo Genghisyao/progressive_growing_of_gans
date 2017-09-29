@@ -3,7 +3,6 @@ from db_init import *
 import time,re
 import  sched
 
-time_sch = sched.scheduler(time.time, time.sleep)
 
 class HotWarning():
 
@@ -73,21 +72,7 @@ class HotWarning():
                 warning_tuple = (warning_id, warning_level, warning_datetime, warning_type, threshold_value, reason, warning_value)
                 hot_warning_mes.append(warning_tuple)
 
-        # 将预警文章数据导入的数据库
-        sql = "INSERT INTO  hot_article_warning(Tid, level, warning_datetime, type, threshold_value, reason, data_value) VALUES"
-        del_sql = "DELETE FROM hot_article_warning WHERE Tid in (%s) "
-        if len(hot_warning_mes) > 0:
-            insert_data = []
-            del_id = []
-            for q in hot_warning_mes:
-                insert_data.append(" ('%s' ,'%s','%s','%s','%s','%s','%s') " % (q[0], q[1], q[2], q[3], q[4], q[5], q[6]))
-                del_id.append("'" + q[0] + "'")
-
-            sql_insert = sql + ','.join(insert_data)
-            delete_sql = del_sql % ','.join(del_id)
-            session.execute(delete_sql)
-            session.execute(sql_insert)
-            session.commit()
+        HotWarning().insert_data(hot_warning_mes)
 
 
 
@@ -142,14 +127,19 @@ class HotWarning():
                     hot_warning_mes.append(warning_tuple)
                     break
 
-        #将预警文章数据导入的数据库
-        sql = "INSERT INTO  hot_article_warning(Tid, level, warning_datetime, type, threshold_value, reason, data_value) VALUES"
+        HotWarning().insert_data(hot_warning_mes)
+
+
+    # 将预警文章数据导入的数据库
+    def insert_data(self, hot_warning_mes):
+        sql = "INSERT INTO,  hot_article_warning(Tid, level, warning_datetime, type, threshold_value, reason, data_value) VALUES"
         del_sql = "DELETE FROM hot_article_warning WHERE Tid in (%s) "
         if len(hot_warning_mes) > 0:
             insert_data = []
             del_id = []
             for q in hot_warning_mes:
-                insert_data.append(" ('%s' ,'%s','%s','%s','%s','%s','%s') " % (q[0], q[1], q[2], q[3], q[4], q[5], q[6]))
+                insert_data.append(
+                    " ('%s' ,'%s','%s','%s','%s','%s','%s') " % (q[0], q[1], q[2], q[3], q[4], q[5], q[6]))
                 del_id.append("'" + q[0] + "'")
 
             sql_insert = sql + ','.join(insert_data)
