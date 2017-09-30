@@ -39,7 +39,6 @@ class sendWarning():
                     # resultList = self.lineMessage(contents)
                         # for r in resultList:
                         #     print r[0],r[1],r[2],r[3],r[4],r[5],r[6]
-                    print
                     content = self.htmlContent(contents)
                     for m in method:
                         if m['type'] == 'email':
@@ -123,7 +122,7 @@ class sendWarning():
     def htmlContent(self, resultList):
         trList = []
         for r in resultList:
-            # print type(r[0]), type(r[1]), type(r[2]), type(r[3]), type(r[4]), type(r[5]), type(r[6])
+            #print type(r[0]), type(r[1]), type(r[2]), type(r[3]), type(r[4]), type(r[5]), type(r[6])
 
             content = u"""
                 <tr>
@@ -180,7 +179,8 @@ class sendWarning():
         password = 'yxfxlvzliisybdjd' # 发送人邮箱密码 'jbaldhvlukyzbfje'
         smtp_server = 'smtp.qq.com'  # 邮箱服务器
         smtp_port = 465  # 邮箱端口号
-        to_addr = '1048418294@qq.com'
+        to_addr = '1106066690@qq.com'
+        print to_addr
         if html:
             msg = MIMEText(content, 'html', 'utf-8')  # 发html邮件
         else:

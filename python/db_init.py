@@ -5,9 +5,9 @@ from sqlalchemy import create_engine
 from db_model import *
 
 #数据库配置
-DB_USER = 'yqfx'
-DB_PASSWORD = 'yqfx'
-DB_HOST = '112.124.47.197'
+DB_USER = 'root'
+DB_PASSWORD = 'zzm15331411'
+DB_HOST = 'localhost'
 DB_PORT = '3306'
 DB_NAME = 'sentiment'
 DB_CHATSET = 'utf8mb4'
