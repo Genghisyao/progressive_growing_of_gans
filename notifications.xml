@@ -1,6 +1,0 @@
-<application>
-  <component name="NotificationConfiguration" showBalloons="false">
-    <notification groupId="Find in Path" displayType="TOOL_WINDOW" />
-    <notification groupId="Remote Desktop" />
-  </component>
-</application>
